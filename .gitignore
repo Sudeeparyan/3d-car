@@ -1,0 +1,5 @@
+.venv/
+work/
+tools/blender-4.5.14-windows-x64/
+tools/PrusaSlicer-2.9.6/
+tools/*.zip

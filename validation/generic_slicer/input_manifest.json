@@ -1,0 +1,32 @@
+﻿[
+    {
+        "exit_code":  0,
+        "input_modified_utc":  "2026-09-17T07:46:35.9455547Z",
+        "file":  "01_body_160mm.stl",
+        "name":  "body",
+        "output":  "01_body_SIMULATION_DO_NOT_PRINT.gcode.txt",
+        "note":  "Generic geometry simulation only. Unknown college printer. Toolpaths must not be printed.",
+        "sliced_utc":  "2026-09-17T19:37:45.8627841Z",
+        "sha256":  "bbcb944984bbeb264a11b0657c688b5b4afb45eafc0d7f3d665d2c348992039a"
+    },
+    {
+        "exit_code":  0,
+        "input_modified_utc":  "2026-09-17T07:46:37.0569168Z",
+        "file":  "02_wheel_front_left.stl",
+        "name":  "wheel",
+        "output":  "02_wheel_SIMULATION_DO_NOT_PRINT.gcode.txt",
+        "note":  "Generic geometry simulation only. Unknown college printer. Toolpaths must not be printed.",
+        "sliced_utc":  "2026-09-17T19:37:49.0650081Z",
+        "sha256":  "007d793597282c5bf6f55eed49d28a2625e730b743f8a00ebb50f19e10a008a2"
+    },
+    {
+        "exit_code":  0,
+        "input_modified_utc":  "2026-09-17T07:46:37.1407371Z",
+        "file":  "06_detail_test_1to1.stl",
+        "name":  "coupon",
+        "output":  "06_coupon_SIMULATION_DO_NOT_PRINT.gcode.txt",
+        "note":  "Generic geometry simulation only. Unknown college printer. Toolpaths must not be printed.",
+        "sliced_utc":  "2026-09-17T19:37:50.2807680Z",
+        "sha256":  "89f598564f5d9d719ff3155d8391ede90dc9d34fbc74418d6723a4157946b63e"
+    }
+]

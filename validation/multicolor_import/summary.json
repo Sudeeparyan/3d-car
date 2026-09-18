@@ -1,0 +1,214 @@
+{
+  "status": "PASS_WITH_MANUAL_FILAMENT_ASSIGNMENT",
+  "checked_at_utc": "2026-09-18T07:14:56.387905+00:00",
+  "tool": "PrusaSlicer 2.9.6 Windows CLI",
+  "method": "Import with --dont-arrange --info --export-3mf. Parse actual roundtrip XML and named-volume metadata. Compare global vertices of every color volume.",
+  "college_printer_model": "UNKNOWN",
+  "college_color_capability": "UNCONFIRMED",
+  "actual_machine_slice": "NOT DONE",
+  "physical_sample": "NOT PRINTED",
+  "checks": {
+    "body": {
+      "input_file": "multicolor/body_color_parts.3mf",
+      "input_sha256": "f27eda1e0cc5305eb7a8c38cf42fddde05aedbe1ae51e1d5904c0c87113ef169",
+      "roundtrip_file": "body_final_AUDIT_ONLY_roundtrip.3mf",
+      "grouped_object_count": 1,
+      "named_volume_count": 3,
+      "dimensions_mm": [
+        160.0,
+        69.48913569999999,
+        41.1379089
+      ],
+      "bounds_mm": [
+        [
+          -80.0,
+          -34.746891,
+          0.0
+        ],
+        [
+          80.0,
+          34.7422447,
+          41.1379089
+        ]
+      ],
+      "triangle_count": 70800,
+      "source_base_material_count": 4,
+      "roundtrip_base_material_count": 0,
+      "parts": {
+        "BODY \u2014 WHITE": {
+          "triangle_count": 41830,
+          "bounds_mm": [
+            [
+              -80.0,
+              -31.9796829,
+              0.0
+            ],
+            [
+              80.0,
+              31.9723434,
+              41.1379089
+            ]
+          ],
+          "maximum_vertex_change_mm": 4.701063716668073e-06,
+          "mesh_repair_counts": {
+            "edges_fixed": "0",
+            "degenerate_facets": "0",
+            "facets_removed": "0",
+            "facets_reversed": "0",
+            "backwards_edges": "0"
+          }
+        },
+        "BODY \u2014 BLACK": {
+          "triangle_count": 26892,
+          "bounds_mm": [
+            [
+              -79.9184189,
+              -34.746891,
+              0.0
+            ],
+            [
+              78.6994247,
+              34.7422447,
+              39.3981361
+            ]
+          ],
+          "maximum_vertex_change_mm": 4.014037870144757e-06,
+          "mesh_repair_counts": {
+            "edges_fixed": "0",
+            "degenerate_facets": "0",
+            "facets_removed": "0",
+            "facets_reversed": "0",
+            "backwards_edges": "0"
+          }
+        },
+        "BODY \u2014 RED": {
+          "triangle_count": 2078,
+          "bounds_mm": [
+            [
+              69.0500031,
+              -25.1760254,
+              19.5138664
+            ],
+            [
+              76.4441681,
+              25.1763535,
+              24.7473259
+            ]
+          ],
+          "maximum_vertex_change_mm": 4.633573141355462e-06,
+          "mesh_repair_counts": {
+            "edges_fixed": "0",
+            "degenerate_facets": "0",
+            "facets_removed": "0",
+            "facets_reversed": "0",
+            "backwards_edges": "0"
+          }
+        }
+      }
+    },
+    "wheel": {
+      "input_file": "multicolor/wheel_color_parts.3mf",
+      "input_sha256": "1188c72920f3ca626d33ad90434c1c385bdcac366992dc7c59f8656ed3b5ddba",
+      "roundtrip_file": "wheel_final_AUDIT_ONLY_roundtrip.3mf",
+      "grouped_object_count": 1,
+      "named_volume_count": 3,
+      "dimensions_mm": [
+        23.2999992,
+        23.2999992,
+        9.0
+      ],
+      "bounds_mm": [
+        [
+          -11.6499996,
+          -11.6499996,
+          0.0
+        ],
+        [
+          11.6499996,
+          11.6499996,
+          9.0
+        ]
+      ],
+      "triangle_count": 21812,
+      "source_base_material_count": 4,
+      "roundtrip_base_material_count": 0,
+      "parts": {
+        "WHEEL \u2014 BLACK": {
+          "triangle_count": 2198,
+          "bounds_mm": [
+            [
+              -11.6499996,
+              -11.6499996,
+              0.0
+            ],
+            [
+              11.6499996,
+              11.6499996,
+              8.39999962
+            ]
+          ],
+          "maximum_vertex_change_mm": 5.00199960917977e-07,
+          "mesh_repair_counts": {
+            "edges_fixed": "0",
+            "degenerate_facets": "0",
+            "facets_removed": "0",
+            "facets_reversed": "0",
+            "backwards_edges": "0"
+          }
+        },
+        "WHEEL \u2014 DARK GREY": {
+          "triangle_count": 19158,
+          "bounds_mm": [
+            [
+              -9.88000011,
+              -9.88000011,
+              6.69999981
+            ],
+            [
+              9.88000011,
+              9.88000011,
+              9.0
+            ]
+          ],
+          "maximum_vertex_change_mm": 5.00199960917977e-07,
+          "mesh_repair_counts": {
+            "edges_fixed": "0",
+            "degenerate_facets": "0",
+            "facets_removed": "0",
+            "facets_reversed": "0",
+            "backwards_edges": "0"
+          }
+        },
+        "WHEEL \u2014 RED": {
+          "triangle_count": 456,
+          "bounds_mm": [
+            [
+              -7.30000019,
+              -1.75,
+              7.11999989
+            ],
+            [
+              -5.0,
+              4.1500001,
+              7.89999962
+            ]
+          ],
+          "maximum_vertex_change_mm": 7.47127833108923e-07,
+          "mesh_repair_counts": {
+            "edges_fixed": "0",
+            "degenerate_facets": "0",
+            "facets_removed": "0",
+            "facets_reversed": "0",
+            "backwards_edges": "0"
+          }
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Colors in standard 3MF base materials are not retained by this PrusaSlicer roundtrip; manually assign filament to each named part.",
+    "Other slicer families were not tested. Use the shared-coordinate STL multipart fallback if named volumes or positions are lost.",
+    "This verifies file import and coordinates, not wall thickness, supports, extrusion, purging, actual machine profile, or physical fit."
+  ],
+  "correction": "Replaced component assembly with one mesh object plus three explicit named volumes. Original component assembly imported as separate objects and dropped wheel colors independently; corrected files retain 9 mm wheel height."
+}

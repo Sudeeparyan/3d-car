@@ -1,0 +1,4 @@
+Ford Mustang GT 2018 by SadPepe on Thingiverse: https://www.thingiverse.com/thing:3192801
+
+Summary:
+Ford Mustang GT 2018 that I spent hours modelling. I superglued all the parts together. Will update pics when I finish printing it. The parts have different scaling factors (Check out below for info). I remixed the wheels from Stunner2211's ACR Viper. Go check out his huge collection of car models @stunner2211 here:- https://www.thingiverse.com/stunner2211/collections/my-car-gallery UPDATE 11/4I fixed the scale. Now the default will print you a nice model that is 14cm from headlight to exhaust.Enjoy :3 SMASH THAT LIKE BUTTON AND SHAREP.S. I would love some feedback as its my first publish. Post how yours turn out please! 

@@ -1,0 +1,197 @@
+{
+  "status": "GEOMETRY_CHECKS_PASS",
+  "palette": {
+    "white": "#F3F2EB",
+    "black": "#16191D",
+    "red": "#BF1725",
+    "dark_grey": "#4F545A"
+  },
+  "inputs_sha256": {
+    "work\\body_assembled.stl": "bab4ea12b1438df2251d5520ab92ee983bdec135e4833113168ced3d5e7a0750",
+    "work\\wheel_master.stl": "007d793597282c5bf6f55eed49d28a2625e730b743f8a00ebb50f19e10a008a2",
+    "reference_assets\\thingiverse_3192801\\files\\mustangBodyOnly.stl": "9ff16cf5d4c194b09cd6eea202e28d3df2457c1851f55ab3d8af49048c2adc4d"
+  },
+  "body": {
+    "files": {
+      "white": {
+        "path": "multicolor\\body_white.stl",
+        "sha256": "9f05587314e17c0aec902f276be69f58525d901df354242ddfa76b56278b88e3",
+        "triangles": 41830,
+        "volume_mm3": 227816.2910868582,
+        "watertight": true,
+        "winding_consistent": true,
+        "positive_volume": true,
+        "connected_solids": 1,
+        "bounds_mm": [
+          [
+            -80.0,
+            -31.97968292236328,
+            0.0
+          ],
+          [
+            80.0,
+            31.97234535217285,
+            41.137908935546875
+          ]
+        ]
+      },
+      "black": {
+        "path": "multicolor\\body_black.stl",
+        "sha256": "6aa5319fb0833153f2543c3b8c6946e91a131f97b16e1c4a2193fb083450ef57",
+        "triangles": 26892,
+        "volume_mm3": 31393.73638974437,
+        "watertight": true,
+        "winding_consistent": true,
+        "positive_volume": true,
+        "connected_solids": 27,
+        "bounds_mm": [
+          [
+            -79.91841888427734,
+            -34.746891021728516,
+            0.0
+          ],
+          [
+            78.69942748794725,
+            34.742244720458984,
+            39.398136369557996
+          ]
+        ]
+      },
+      "red": {
+        "path": "multicolor\\body_red.stl",
+        "sha256": "1656a8bf53024ee6b5a454a2ec0f8e9ad8a2bf74dd72df8094710af7b28dd385",
+        "triangles": 2078,
+        "volume_mm3": 312.1131235578292,
+        "watertight": true,
+        "winding_consistent": true,
+        "positive_volume": true,
+        "connected_solids": 6,
+        "bounds_mm": [
+          [
+            69.05,
+            -25.176023329131457,
+            19.513866603251607
+          ],
+          [
+            76.44416784284164,
+            25.176353132805854,
+            24.747325020702906
+          ]
+        ]
+      }
+    },
+    "pairwise_overlap_mm3": {
+      "white / black": 9.430974745724616e-13,
+      "white / red": 0.0,
+      "black / red": 2.82698398110931e-14
+    },
+    "units": "mm",
+    "original_volume_mm3": 259522.1406001604,
+    "union_volume_mm3": 259522.1406001604,
+    "missing_volume_mm3": 1.1165794511697545e-07,
+    "added_volume_mm3": 1.1165771410526394e-07,
+    "max_union_difference_tolerance_mm3": 0.02,
+    "outer_dimensions_mm": [
+      160.0,
+      69.4891357421875,
+      41.137908935546875
+    ],
+    "status": "PASS"
+  },
+  "wheel": {
+    "files": {
+      "black": {
+        "path": "multicolor\\wheel_black.stl",
+        "sha256": "11e9041ee73ed8d1fc45cbfd8efec37a7e503e8543e5930c1ec3ea9a9351c4a4",
+        "triangles": 2198,
+        "volume_mm3": 2990.787810225619,
+        "watertight": true,
+        "winding_consistent": true,
+        "positive_volume": true,
+        "connected_solids": 1,
+        "bounds_mm": [
+          [
+            -11.649999618530273,
+            -11.649999618530273,
+            0.0
+          ],
+          [
+            11.649999618530273,
+            11.649999618530273,
+            8.399999618530273
+          ]
+        ]
+      },
+      "dark_grey": {
+        "path": "multicolor\\wheel_dark_grey.stl",
+        "sha256": "263519274a25525645af3696870376d2d31266a4fb451f87d21175d6bb6827d8",
+        "triangles": 19158,
+        "volume_mm3": 337.3864394081701,
+        "watertight": true,
+        "winding_consistent": true,
+        "positive_volume": true,
+        "connected_solids": 1,
+        "bounds_mm": [
+          [
+            -9.88,
+            -9.88,
+            6.699999999999999
+          ],
+          [
+            9.88,
+            9.88,
+            9.0
+          ]
+        ]
+      },
+      "red": {
+        "path": "multicolor\\wheel_red.stl",
+        "sha256": "13c44fe989adce2bc53604588155cf30c0b300f0f5429f17d4a9256ba26da96d",
+        "triangles": 456,
+        "volume_mm3": 9.35409642558948,
+        "watertight": true,
+        "winding_consistent": true,
+        "positive_volume": true,
+        "connected_solids": 1,
+        "bounds_mm": [
+          [
+            -7.300000000000001,
+            -1.75,
+            7.12
+          ],
+          [
+            -5.0,
+            4.15,
+            7.900000095367432
+          ]
+        ]
+      }
+    },
+    "pairwise_overlap_mm3": {
+      "black / dark_grey": 6.661338147750939e-15,
+      "black / red": 0.0,
+      "dark_grey / red": 2.3744027577432547e-16
+    },
+    "units": "mm",
+    "original_volume_mm3": 3337.5283460593782,
+    "union_volume_mm3": 3337.5283460593782,
+    "missing_volume_mm3": 1.578897815542271e-14,
+    "added_volume_mm3": 1.576816147294843e-14,
+    "max_union_difference_tolerance_mm3": 0.02,
+    "outer_dimensions_mm": [
+      23.299999237060547,
+      23.299999237060547,
+      9.0
+    ],
+    "status": "PASS"
+  },
+  "3mf_files": [
+    "multicolor\\body_color_parts.3mf",
+    "multicolor\\wheel_color_parts.3mf"
+  ],
+  "printer_model": "UNKNOWN \u2014 color capability also unconfirmed",
+  "slicer_profile": "NOT CONFIGURED",
+  "physical_sample": "NOT PRINTED",
+  "printing_note": "Each color STL contains aligned material volumes and must remain grouped with the other colors. Do not auto-arrange colors independently. The 3MF packages include PrusaSlicer named-volume metadata and standard display colors, not filament assignments. Grouping was tested in PrusaSlicer 2.9.6; other slicers may require the grouped STL fallback.",
+  "3mf_import_audit": "../validation/multicolor_import/summary.json"
+}

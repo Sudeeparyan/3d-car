@@ -1,0 +1,14 @@
+[02_wheel_front_left.stl]
+size_x = 23.299999
+size_y = 23.299999
+size_z = 9.000000
+min_x = -11.650000
+min_y = -11.650000
+min_z = 0.000000
+max_x = 11.650000
+max_y = 11.650000
+max_z = 9.000000
+number_of_facets = 19608
+manifold = yes
+number_of_parts =  1
+volume = 3337.529053

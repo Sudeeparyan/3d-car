@@ -1,0 +1,351 @@
+{
+  "created_utc": "2026-09-17T07:47:15.425412+00:00",
+  "units": "mm",
+  "status": "GEOMETRY_CHECKS_PASS",
+  "tested_export_manifest_sha256": "e0cf769e3bc1028398e2f51592bc41b4f2dbe4d9a16835bfc6a4e70846769d3b",
+  "tolerances": {
+    "body_length_mm": 0.01,
+    "bed_origin_mm": 0.001,
+    "zero_triangle_area_mm2": 1e-12,
+    "volumetric_collision_mm3": 0.001
+  },
+  "parts": [
+    {
+      "file": "print/01_body_160mm.stl",
+      "sha256": "bbcb944984bbeb264a11b0657c688b5b4afb45eafc0d7f3d665d2c348992039a",
+      "triangles": 52640,
+      "vertices_after_coincident_vertex_weld": 26322,
+      "bounds_mm": [
+        [
+          -80.0,
+          -34.746891021728516,
+          0.0
+        ],
+        [
+          80.0,
+          34.742244720458984,
+          41.137908935546875
+        ]
+      ],
+      "dimensions_mm": [
+        160.0,
+        69.4891357421875,
+        41.137908935546875
+      ],
+      "volume_mm3": 259522.14060016038,
+      "connected_components": 1,
+      "zero_area_triangles": 0,
+      "collapsed_index_faces": 0,
+      "backend_status": "Error.NoError",
+      "checks": {
+        "finite_coordinates": true,
+        "watertight": true,
+        "consistent_winding": true,
+        "positive_volume": true,
+        "single_connected_solid": true,
+        "no_zero_area_triangles": true,
+        "no_collapsed_faces_after_vertex_weld": true,
+        "manifold_backend_accepts_mesh": true,
+        "flat_print_origin_at_z_zero": true
+      },
+      "passed": true
+    },
+    {
+      "file": "print/02_wheel_front_left.stl",
+      "sha256": "007d793597282c5bf6f55eed49d28a2625e730b743f8a00ebb50f19e10a008a2",
+      "triangles": 19608,
+      "vertices_after_coincident_vertex_weld": 9774,
+      "bounds_mm": [
+        [
+          -11.649999618530273,
+          -11.649999618530273,
+          0.0
+        ],
+        [
+          11.649999618530273,
+          11.649999618530273,
+          9.0
+        ]
+      ],
+      "dimensions_mm": [
+        23.299999237060547,
+        23.299999237060547,
+        9.0
+      ],
+      "volume_mm3": 3337.5283460593782,
+      "connected_components": 1,
+      "zero_area_triangles": 0,
+      "collapsed_index_faces": 0,
+      "backend_status": "Error.NoError",
+      "checks": {
+        "finite_coordinates": true,
+        "watertight": true,
+        "consistent_winding": true,
+        "positive_volume": true,
+        "single_connected_solid": true,
+        "no_zero_area_triangles": true,
+        "no_collapsed_faces_after_vertex_weld": true,
+        "manifold_backend_accepts_mesh": true,
+        "flat_print_origin_at_z_zero": true
+      },
+      "passed": true
+    },
+    {
+      "file": "print/03_wheel_front_right.stl",
+      "sha256": "007d793597282c5bf6f55eed49d28a2625e730b743f8a00ebb50f19e10a008a2",
+      "triangles": 19608,
+      "vertices_after_coincident_vertex_weld": 9774,
+      "bounds_mm": [
+        [
+          -11.649999618530273,
+          -11.649999618530273,
+          0.0
+        ],
+        [
+          11.649999618530273,
+          11.649999618530273,
+          9.0
+        ]
+      ],
+      "dimensions_mm": [
+        23.299999237060547,
+        23.299999237060547,
+        9.0
+      ],
+      "volume_mm3": 3337.5283460593782,
+      "connected_components": 1,
+      "zero_area_triangles": 0,
+      "collapsed_index_faces": 0,
+      "backend_status": "Error.NoError",
+      "checks": {
+        "finite_coordinates": true,
+        "watertight": true,
+        "consistent_winding": true,
+        "positive_volume": true,
+        "single_connected_solid": true,
+        "no_zero_area_triangles": true,
+        "no_collapsed_faces_after_vertex_weld": true,
+        "manifold_backend_accepts_mesh": true,
+        "flat_print_origin_at_z_zero": true
+      },
+      "passed": true
+    },
+    {
+      "file": "print/04_wheel_rear_left.stl",
+      "sha256": "007d793597282c5bf6f55eed49d28a2625e730b743f8a00ebb50f19e10a008a2",
+      "triangles": 19608,
+      "vertices_after_coincident_vertex_weld": 9774,
+      "bounds_mm": [
+        [
+          -11.649999618530273,
+          -11.649999618530273,
+          0.0
+        ],
+        [
+          11.649999618530273,
+          11.649999618530273,
+          9.0
+        ]
+      ],
+      "dimensions_mm": [
+        23.299999237060547,
+        23.299999237060547,
+        9.0
+      ],
+      "volume_mm3": 3337.5283460593782,
+      "connected_components": 1,
+      "zero_area_triangles": 0,
+      "collapsed_index_faces": 0,
+      "backend_status": "Error.NoError",
+      "checks": {
+        "finite_coordinates": true,
+        "watertight": true,
+        "consistent_winding": true,
+        "positive_volume": true,
+        "single_connected_solid": true,
+        "no_zero_area_triangles": true,
+        "no_collapsed_faces_after_vertex_weld": true,
+        "manifold_backend_accepts_mesh": true,
+        "flat_print_origin_at_z_zero": true
+      },
+      "passed": true
+    },
+    {
+      "file": "print/05_wheel_rear_right.stl",
+      "sha256": "007d793597282c5bf6f55eed49d28a2625e730b743f8a00ebb50f19e10a008a2",
+      "triangles": 19608,
+      "vertices_after_coincident_vertex_weld": 9774,
+      "bounds_mm": [
+        [
+          -11.649999618530273,
+          -11.649999618530273,
+          0.0
+        ],
+        [
+          11.649999618530273,
+          11.649999618530273,
+          9.0
+        ]
+      ],
+      "dimensions_mm": [
+        23.299999237060547,
+        23.299999237060547,
+        9.0
+      ],
+      "volume_mm3": 3337.5283460593782,
+      "connected_components": 1,
+      "zero_area_triangles": 0,
+      "collapsed_index_faces": 0,
+      "backend_status": "Error.NoError",
+      "checks": {
+        "finite_coordinates": true,
+        "watertight": true,
+        "consistent_winding": true,
+        "positive_volume": true,
+        "single_connected_solid": true,
+        "no_zero_area_triangles": true,
+        "no_collapsed_faces_after_vertex_weld": true,
+        "manifold_backend_accepts_mesh": true,
+        "flat_print_origin_at_z_zero": true
+      },
+      "passed": true
+    },
+    {
+      "file": "print/06_detail_test_1to1.stl",
+      "sha256": "89f598564f5d9d719ff3155d8391ede90dc9d34fbc74418d6723a4157946b63e",
+      "triangles": 2292,
+      "vertices_after_coincident_vertex_weld": 1148,
+      "bounds_mm": [
+        [
+          -15.0,
+          -10.0,
+          0.0
+        ],
+        [
+          15.0,
+          10.0,
+          11.899999618530273
+        ]
+      ],
+      "dimensions_mm": [
+        30.0,
+        20.0,
+        11.899999618530273
+      ],
+      "volume_mm3": 1714.5883200456858,
+      "connected_components": 1,
+      "zero_area_triangles": 0,
+      "collapsed_index_faces": 0,
+      "backend_status": "Error.NoError",
+      "checks": {
+        "finite_coordinates": true,
+        "watertight": true,
+        "consistent_winding": true,
+        "positive_volume": true,
+        "single_connected_solid": true,
+        "no_zero_area_triangles": true,
+        "no_collapsed_faces_after_vertex_weld": true,
+        "manifold_backend_accepts_mesh": true,
+        "flat_print_origin_at_z_zero": true
+      },
+      "passed": true
+    }
+  ],
+  "assembly_checks": {
+    "body_length_160mm_within_0_01mm": true,
+    "four_wheel_files": true,
+    "identical_wheel_dimensions": true,
+    "identical_wheel_geometry": true,
+    "no_wheel_body_volumetric_collisions": true
+  },
+  "measured_body_length_mm": 160.0,
+  "assembly_bounds_mm": [
+    [
+      -80.0,
+      -34.746891021728516,
+      3.8146972691777137e-07
+    ],
+    [
+      80.0,
+      34.742244720458984,
+      47.137908935546875
+    ]
+  ],
+  "assembly_dimensions_mm": [
+    160.0,
+    69.4891357421875,
+    47.13790855407715
+  ],
+  "wheel_body_intersections": [
+    {
+      "wheel": "02_wheel_front_left.stl",
+      "world_center_mm": [
+        -48.4472,
+        22.8,
+        11.65
+      ],
+      "consistent_winding_after_transform": true,
+      "positive_volume_after_transform": true,
+      "body_intersection_volume_mm3": 0.0,
+      "intersection_backend_status": "Error.NoError",
+      "no_volumetric_collision": true
+    },
+    {
+      "wheel": "03_wheel_front_right.stl",
+      "world_center_mm": [
+        -48.4472,
+        -22.8,
+        11.65
+      ],
+      "consistent_winding_after_transform": true,
+      "positive_volume_after_transform": true,
+      "body_intersection_volume_mm3": 6.050715484207103e-15,
+      "intersection_backend_status": "Error.NoError",
+      "no_volumetric_collision": true
+    },
+    {
+      "wheel": "04_wheel_rear_left.stl",
+      "world_center_mm": [
+        42.4928,
+        22.8,
+        11.65
+      ],
+      "consistent_winding_after_transform": true,
+      "positive_volume_after_transform": true,
+      "body_intersection_volume_mm3": 3.247402347028583e-15,
+      "intersection_backend_status": "Error.NoError",
+      "no_volumetric_collision": true
+    },
+    {
+      "wheel": "05_wheel_rear_right.stl",
+      "world_center_mm": [
+        42.4928,
+        -22.8,
+        11.65
+      ],
+      "consistent_winding_after_transform": true,
+      "positive_volume_after_transform": true,
+      "body_intersection_volume_mm3": 3.122502256758253e-14,
+      "intersection_backend_status": "Error.NoError",
+      "no_volumetric_collision": true
+    }
+  ],
+  "design_targets_not_universal_wall_certification": {
+    "added_mirror_connection_diameter_mm": 2.5,
+    "added_wheel_attachment_pad_diameter_mm": 11.2,
+    "source_detail_minimum_wall_thickness": "NOT exhaustively measured"
+  },
+  "remaining_checks": [
+    "Actual college printer, material, nozzle and profile are unknown.",
+    "Inspect all final layers and support placement in the actual printer slicer.",
+    "Physically print one wheel and the detail coupon before the full body.",
+    "Confirm wheel pad contact, alignment, finish and adhesive fit with the physical parts.",
+    "Fine inherited grille, badges, panels and mirror surfaces have no blanket minimum-wall pass."
+  ],
+  "limits": [
+    "No printer-specific G-code has been validated by this script.",
+    "Topology/backend acceptance is not exhaustive self-intersection or wall-thickness certification.",
+    "A zero intersection volume permits designed tangent glue contact; it is not a fit guarantee.",
+    "The finite surface meshes are measured as exported; STL itself stores no unit metadata."
+  ]
+}

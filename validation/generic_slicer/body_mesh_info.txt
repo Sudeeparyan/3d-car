@@ -1,0 +1,14 @@
+[01_body_160mm.stl]
+size_x = 160.000000
+size_y = 69.489136
+size_z = 41.137909
+min_x = -80.000000
+min_y = -34.746891
+min_z = 0.000000
+max_x = 80.000000
+max_y = 34.742245
+max_z = 41.137909
+number_of_facets = 52640
+manifold = yes
+number_of_parts =  1
+volume = 259522.156250

@@ -1,0 +1,14 @@
+[06_detail_test_1to1.stl]
+size_x = 30.000000
+size_y = 20.000000
+size_z = 11.900000
+min_x = -15.000000
+min_y = -10.000000
+min_z = 0.000000
+max_x = 15.000000
+max_y = 10.000000
+max_z = 11.900000
+number_of_facets = 2292
+manifold = yes
+number_of_parts =  1
+volume = 1714.588379

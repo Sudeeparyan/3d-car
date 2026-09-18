@@ -1,0 +1,51 @@
+{
+  "units": "millimetres",
+  "palette": {
+    "white": "#F3F2EB",
+    "black": "#16191D",
+    "red": "#BF1725",
+    "dark_grey": "#4F545A"
+  },
+  "printer_model": "UNKNOWN",
+  "multicolor_capability": "UNCONFIRMED",
+  "physical_objects": [
+    {
+      "name": "Body",
+      "quantity": 1,
+      "preferred_file": "body_color_parts.3mf",
+      "parts": {
+        "white": "body_white.stl",
+        "black": "body_black.stl",
+        "red": "body_red.stl"
+      },
+      "orientation": "upright, hidden flat underside on bed",
+      "dimensions_mm": [
+        160.0,
+        69.4891357421875,
+        41.137908935546875
+      ],
+      "assembly_offset_mm": [
+        0,
+        0,
+        6
+      ]
+    },
+    {
+      "name": "Wheel",
+      "quantity": 4,
+      "preferred_file": "wheel_color_parts.3mf",
+      "parts": {
+        "black": "wheel_black.stl",
+        "dark_grey": "wheel_dark_grey.stl",
+        "red": "wheel_red.stl"
+      },
+      "orientation": "flat back on bed, visible face upward",
+      "dimensions_mm": [
+        23.299999237060547,
+        23.299999237060547,
+        9.0
+      ]
+    }
+  ],
+  "instructions": "Keep the three material regions within each physical object in their original shared coordinates. Assign filaments manually; standard 3MF colors are not machine settings. Do not print the material regions as loose pieces."
+}
