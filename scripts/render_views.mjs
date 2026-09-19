@@ -5,9 +5,10 @@
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer-core';
 
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = Object.fromEntries(process.argv.slice(2).reduce((a, x, i, arr) => {
   if (x.startsWith('--')) a.push([x.slice(2), arr[i + 1] && !arr[i + 1].startsWith('--') ? arr[i + 1] : 'true']);
   return a;
@@ -20,7 +21,22 @@ const out = path.resolve(ROOT, args.out || 'previews/likeness');
 const views = (args.views || 'three,side,front,rear,rear34,top').split(',');
 const modes = (args.modes || 'shaded').split(',');
 const W = +(args.w || 1600), H = +(args.h || 1000);
-const CHROME = args.chrome || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+// Chrome / Chromium executable: --chrome <path>, then $CHROME_PATH, then the usual install locations.
+const CHROME_CANDIDATES = [
+  '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+  '/Applications/Chromium.app/Contents/MacOS/Chromium',
+  'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+  'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
+  (process.env.LOCALAPPDATA || '') + '\\Google\\Chrome\\Application\\chrome.exe',
+  'C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe',
+  '/usr/bin/google-chrome', '/usr/bin/google-chrome-stable', '/usr/bin/chromium', '/usr/bin/chromium-browser',
+  '/snap/bin/chromium', '/usr/bin/microsoft-edge',
+];
+const CHROME = args.chrome || process.env.CHROME_PATH || CHROME_CANDIDATES.find(c => c && fs.existsSync(c));
+if (!CHROME) {
+  console.error('No Chrome/Chromium/Edge found. Install Google Chrome or set CHROME_PATH=<full path to the browser executable>.');
+  process.exit(2);
+}
 const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.obj': 'text/plain', '.mtl': 'text/plain', '.png': 'image/png' };
 const WIDE = new Set(['side', 'sideR', 'top', 'wheel', 'wheelR']);   // 16:6.4 framing like the Blender side previews
 const TALL = new Set(['side_persp']);                       // 4:3 like the phone photographs

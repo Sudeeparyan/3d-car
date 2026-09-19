@@ -1,5 +1,5 @@
 {
- "render_dir": "validation/likeness/iter_15",
+ "render_dir": "/Users/chetan/Desktop/sudeepprojects/3d-car/validation/likeness/runpy_test",
  "checks": {
   "front.grille_black_fraction": {
    "value": 0.891469681397739,

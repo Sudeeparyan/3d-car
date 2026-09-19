@@ -1,0 +1,13 @@
+# Python packages for the Mustang 160 mm build pipeline (scripts/*.py).
+# Install into a virtual environment:  python run.py setup   (or see README "Install").
+# Versions are the ones the 19 September 2026 files were generated with (Python 3.12).
+numpy==2.5.3
+scipy==1.18.1
+trimesh==5.1.0
+manifold3d==3.5.3
+fast_simplification==0.2.0   # quadric decimation backend used by trimesh in build_body.py
+rtree==1.4.1                 # spatial index used by trimesh
+networkx==3.6.1              # graph utilities used by trimesh
+scikit-image==0.26.0
+opencv-python-headless==5.0.0.93
+pillow==12.3.0

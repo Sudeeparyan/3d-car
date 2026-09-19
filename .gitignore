@@ -6,5 +6,6 @@ tools/*.zip
 START_HERE.zip
 node_modules/
 package-lock.json
-validation/likeness/iter_*/
+validation/likeness/*/
+!validation/likeness/final/
 scripts/__pycache__/
