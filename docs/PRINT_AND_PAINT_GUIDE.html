@@ -12,9 +12,9 @@
 <body><main>
 <div class="eyebrow">Your friend's Mustang · college print handoff</div>
 <h1>A little Mustang.<br>A personal birthday gift.</h1>
-<p class="lead">160 mm target length. One white body. Four fixed wheels. A simplified display model with the black trim and red details from your photos.</p>
+<p class="lead">160 mm target length. One white body. Four fixed wheels. A simplified display model with the gloss-black pony badge, slim headlamps, black trim, hash-mark stripe, 5.0 badges, RTR Y-spoke wheels with their centre-cap logo, a rear number plate and red details from your photos.</p>
 <p><a href="../START_HERE.html"><strong>Open START HERE</strong></a> · <a href="../previews/00_COLOR_AND_ASSEMBLY_DIAGRAM.png">Color and assembly diagram</a></p>
-<div class="settings"><strong>How to get the colors from your six photos</strong><br><strong>White</strong> body · <strong>Black</strong> windows, tires, stripes and trim · <strong>Dark grey</strong> wheel faces · <strong>Red</strong> brake and rear-light details.<br>If the college machine supports the required multicolor job, use the separate color volumes in <code>multicolor/</code> and assign filaments in its slicer. Otherwise print the body in white PLA, wheels in black PLA, and paint the remaining details.<br><strong>STLs contain no colors.</strong> The colored diagram and OBJ materials do not assign filaments automatically.</div>
+<div class="settings"><strong>How to get the colors from your six photos</strong><br><strong>White</strong> body · <strong>Black</strong> windows, tires, stripes and trim · <strong>Dark grey</strong> wheel faces · <strong>Red</strong> brake and rear-light details.<br>If the college machine supports the required multicolor job, use the separate color volumes in <code>multicolor/</code> and assign filaments in its slicer. Otherwise print the body in white PLA, wheels in black PLA, and paint the remaining details; the grille, lamps, intake, vents, corner slots and diffuser are recessed so their edges show unpainted.<br><strong>STLs contain no colors.</strong> The colored diagram and OBJ materials do not assign filaments automatically.</div>
 <div class="status"><strong>Digital geometry checks passed. Printer preparation is still required.</strong><br>All six single-material STLs in <code>print/</code> passed the recorded checks. The separate multicolor checks also passed: closed regions, no material overlap beyond numerical tolerance, and a combined shape matching each complete part. The college printer's model, multicolor capability and profile are unconfirmed. Inspect the sliced layers in its actual profile and print a successful sample before the full body. No physical print is claimed in this guide.</div>
 <div class="quick">
 <div class="step"><b>1 · Take the files</b><p>Bring both the multicolor and print folders, this guide, previews and your photos.</p></div>
@@ -23,17 +23,18 @@
 </div>
 
 <h2>Model details</h2>
-<p class="small">Measured export dimensions, rounded to 0.01 mm. Exact body length: <strong>160.000000 mm</strong>. All six STL exports passed the checks recorded on 17 September 2026; see <a href="../validation/GEOMETRY_REPORT.md">the geometry report</a>.</p>
+<p class="small">Measured export dimensions, rounded to 0.01 mm. Exact body length: <strong>160.000000 mm</strong>. All six STL exports passed the checks recorded on 19 September 2026; see <a href="../validation/GEOMETRY_REPORT.md">the geometry report</a>.</p>
 <table><tbody>
 <tr><td>Printable files, all in <code>print/</code></td><td><code>01_body_160mm.stl</code><br><code>02_wheel_front_left.stl</code><br><code>03_wheel_front_right.stl</code><br><code>04_wheel_rear_left.stl</code><br><code>05_wheel_rear_right.stl</code></td></tr>
-<tr><td>Assembled dimensions, L × W × H</td><td><strong>160.00 × 69.49 × 47.14 mm</strong></td></tr>
-<tr><td>Body print dimensions</td><td><strong>160.00 × 69.49 × 41.14 mm</strong></td></tr>
-<tr><td>One wheel print dimensions</td><td><strong>23.30 × 23.30 × 9.00 mm</strong> · flat inner face down</td></tr>
+<tr><td>Assembled dimensions, L × W × H</td><td><strong>160.00 × 69.73 × 46.59 mm</strong></td></tr>
+<tr><td>Body print dimensions</td><td><strong>160.00 × 69.73 × 40.59 mm</strong></td></tr>
+<tr><td>One wheel print dimensions</td><td><strong>23.30 × 23.30 × 8.95 mm</strong> · flat inner face down</td></tr>
 <tr><td>Wheel attachment and orientation</td><td>Flat wheel backs glue to <strong>11.2 mm diameter body pads</strong>. All wheels are identical. Turn the caliper relief toward the <strong>rear bumper</strong> (+X in the assembled model).</td></tr>
 <tr><td>Exact-scale test files, in <code>print/</code></td><td><code>06_detail_test_1to1.stl</code><br>plus one <code>02_wheel_front_left.stl</code></td></tr>
 <tr><td>Geometry validation</td><td><strong>PASS for all six STLs:</strong> closed, consistently oriented, one connected solid, positive volume and Z=0 print origin. This does not certify every thin feature, support layout or physical fit.</td></tr>
+<tr><td>Photo likeness of the renders</td><td><strong>88.4 %</strong>: 19/19 signature features present, roof/deck side profile within 0.58 mm of the photograph. See <code>validation/likeness/final/contact_sheet.jpg</code>.</td></tr>
 </tbody></table>
-<p class="small">The body STL already rests at Z=0 for printing. Its flat underside sits <strong>6 mm above the ground</strong> in the assembled OBJ and Blender model; do not apply that assembled height as a print-bed offset.</p>
+<p class="small">The body STL already rests at Z=0 for printing. Its flat underside sits <strong>6 mm above the ground</strong> in the assembled OBJ and the viewer; do not apply that assembled height as a print-bed offset.</p>
 
 <h2>At the college</h2>
 <p>Tell the technician: “This is a 160 mm display model with separately printed wheels and four colors: white, black, dark grey and red. Please check whether this machine can print the colors; otherwise I will paint it. Please confirm scale and supports and run samples first.”</p>
@@ -52,7 +53,7 @@
 <li>Inspect layers for gaps, overlaps and missing small color regions. Configure purge/flush amounts, any wipe tower, and supports for the actual machine. Include them in time, material and bed-space estimates.</li>
 <li>Print a multicolor wheel first to check black, dark-grey and red details. Print the detail coupon for structural features. Check the body's color boundaries in the layer preview before the full job.</li>
 </ol>
-<p class="small">A colored OBJ does not guarantee material assignments. Both grouped 3MFs passed an import/export check in <strong>PrusaSlicer 2.9.6</strong>: each remained one object with three named color volumes, correct dimensions and relative positions, and no recorded repairs. <strong>PrusaSlicer did not retain the standard display colors</strong>, so manually assign and verify each named white, black, dark-grey and red region. Other slicers are untested; confirm grouping and shared positions or use the grouped STL alternative. Read the <a href="../validation/multicolor_import/README.md">3MF import audit</a>. This verifies file import, not a college-printer profile or physical print. Do not print a single-material part on top of its equivalent multicolor assembly.</p>
+<p class="small">A colored OBJ does not guarantee material assignments. The grouped 3MFs of the earlier revision of these files passed an import/export check in <strong>PrusaSlicer 2.9.6</strong>: each remained one object with three named color volumes, correct dimensions and relative positions, and no recorded repairs; the container format is unchanged, so repeat that import check on the college machine. <strong>PrusaSlicer did not retain the standard display colors</strong>, so manually assign and verify each named white, black, dark-grey and red region. Other slicers are untested; confirm grouping and shared positions or use the grouped STL alternative. This verifies file import, not a college-printer profile or physical print. Do not print a single-material part on top of its equivalent multicolor assembly.</p>
 <ul class="checklist">
 <li>Record printer model, nozzle, material, filament colors and slicer/profile: ____________________</li>
 <li>Import in <strong>millimetres</strong>; match the measured dimensions above. STL does not reliably carry a unit convention. Disable automatic fitting to the bed.</li>
@@ -69,17 +70,19 @@
 <h2>Paint map</h2>
 <p>Use this map and the six photos to check multicolor filament assignments. Painting is optional for touch-ups and tiny details, or a fallback if the multicolor job cannot be completed. Keep the main silhouette and stripe pattern clear.</p>
 <div class="colors">
-<div class="color"><div class="swatch" style="background:#F3F2EB"></div><b>White</b>Body, hood, roof and bumpers. White PLA can remain unpainted.</div>
-<div class="color"><div class="swatch" style="background:#16191D"></div><b>Black</b>Windows, mirrors, grille, splitter, spoiler, tires and side stripes.</div>
-<div class="color"><div class="swatch" style="background:#4F545A"></div><b>Dark grey</b>Wheel spokes and hubs. Metallic paint is optional.</div>
-<div class="color"><div class="swatch" style="background:#BF1725"></div><b>Red</b>Visible brake detail and three rear-light bars per side.</div>
-<div class="color"><div class="swatch" style="background:#c6cbcd"></div><b>Optional silver paint</b>Small badges and front-light details. Not a fifth filament requirement.</div>
+<div class="color"><div class="swatch" style="background:#F3F2EB"></div><b>White</b>Body, hood, roof, bumpers and the three LED slashes in each headlamp. White PLA can remain unpainted.</div>
+<div class="color"><div class="swatch" style="background:#16191D"></div><b>Black</b>All glass and B-pillars, mirrors, recessed grille and intake, smoked headlamps, corner slots, hood vents, spoiler, antenna, splitter, skirts, rear panel, diffuser, tires and the hash-mark stripe.</div>
+<div class="color"><div class="swatch" style="background:#4F545A"></div><b>Dark grey</b>Wheel spokes, rim and hubs. Metallic paint is optional.</div>
+<div class="color"><div class="swatch" style="background:#0e1114"></div><b>Gloss black</b>Running-pony grille badge, the 5.0 fender badges and the number-plate lettering, as on the car. In the multicolor files they print with the black filament; the pony stands 1.4 mm proud of the grille so it reads by relief.</div>
+<div class="color"><div class="swatch" style="background:#BF1725"></div><b>Red</b>Caliper between the spokes (rear side of each wheel) and three tail-light bars per side.</div>
+<div class="color"><div class="swatch" style="background:#c6cbcd"></div><b>Silver / amber</b>RTR monogram and ring on each wheel centre cap and the exhaust tips silver, headlamp corner markers amber. In the multicolor files silver prints white and amber prints black; no fifth filament. The cap logo (2.6 mm, 0.25 mm strokes) is at the limit of a 0.4 mm nozzle - a silver paint-pen dab on the relief is the realistic finish.</div>
+<div class="color"><div class="swatch" style="background:#f3f2eb;border:1px solid #ccc"></div><b>Number plate</b>White rectangle in the rear bumper recess, blank until the registration is set (<code>PLATE_TEXT</code> in <code>scripts/geometry.py</code>) and the files are regenerated.</div>
 </div>
 <ul class="checklist">
 <li>Remove supports carefully and lightly sand rough spots without flattening details.</li>
 <li>Dry-fit every wheel against its round mounting pad and check ground contact before painting.</li>
 <li>Leave <strong>all glue contact surfaces unpainted</strong>.</li>
-<li>Mask the lower black side stripes; copy the diagonal breaks near the front wheels from the photos.</li>
+<li>Mask the lower black side stripe: four short forward-slanted hash marks behind the front wheel, then the solid band to the rear wheel, as in the photos.</li>
 <li>Brush on thin coats of plastic-compatible model paint. Paint the wheels separately and follow paint drying instructions.</li>
 </ul>
 
@@ -88,7 +91,7 @@
 <p>Apply a small amount of plastic-compatible adhesive to the bare contact faces; keep it away from visible surfaces. Keep the body supported and level while the joints set, then remove the spacers after curing. Check all four tires meet the same flat surface.</p>
 <p>The wheels are fixed. Let paint and glue dry according to their product instructions before wrapping. Use a padded box to protect the mirrors and spoiler.</p>
 <p><strong>Three-day target:</strong> confirm the printer and run samples first; use the next print window for main parts; leave the final day for cleanup, paint and assembly. Machine availability, slicer estimates and the test result determine the real schedule. Drop tiny paint details before shortening assembly or drying time.</p>
-<p><strong>Single-material planning estimate only:</strong> about <strong>8 hours 37 minutes and 104 g</strong> for one body and four wheels; the detail coupon adds about 14 minutes and 2 g. This generic simulation includes supports and skirts with a 0.4 mm nozzle and 0.20 mm layers. <strong>Multicolor time and material are unknown.</strong> The college slicer must include color changes, purge waste and the actual machine settings. See the <a href="../validation/generic_slicer/README.md">simulation notes</a>.</p>
+<p><strong>Single-material planning estimate only:</strong> the earlier revision's generic simulation gave about <strong>8 hours 37 minutes and 104 g</strong> for one body and four wheels; the detail coupon adds about 14 minutes and 2 g (0.4 mm nozzle, 0.20 mm layers, simulated supports and skirt). This revision has the same footprint and 2 % less volume, so expect a similar figure. <strong>Multicolor time and material are unknown.</strong> The college slicer must include color changes, purge waste and the actual machine settings.</p>
 
 <h2>Know your files</h2>
 <table><thead><tr><th>File</th><th>What it is for</th></tr></thead><tbody>
@@ -96,12 +99,12 @@
 <tr><td>Multicolor volumes</td><td>An alternative to equivalent single-material STLs. Import as parts of each assembly, preserve their relative placement and assign colors in the slicer.</td></tr>
 <tr><td>Sample STLs</td><td>Print at final scale before committing to the full body.</td></tr>
 <tr><td>Assembled OBJ + MTL</td><td>View the arrangement and colors. Keep both files together.</td></tr>
-<tr><td>Blender project</td><td>Edit the model if changes are needed.</td></tr>
+<tr><td>viewer.html</td><td>Interactive 3D view of the painted assembly, multicolor parts and print STLs (serve the folder with a local web server).</td></tr>
 <tr><td>Previews and validation report</td><td>Appearance guidance and measured mesh checks. A render is not proof of printability.</td></tr>
 </tbody></table>
-<p class="small">A slicer converts the model into machine-specific instructions. No machine-ready G-code is supplied for the college printer. Any generic simulation output in the workspace is for analysis only and must not be sent to the printer. Slicer inspection and a successful sample must be recorded separately from geometry validation.</p>
+<p class="small">A slicer converts the model into machine-specific instructions. No machine-ready G-code is supplied for the college printer. Slicer inspection and a successful sample must be recorded separately from geometry validation.</p>
 
 <div class="scale"><div class="square">20 mm<br>× 20 mm</div><p><strong>Paper scale reference</strong><br>Print this guide at <strong>100% / actual size</strong>, with “fit to page” disabled. The outside edges of this square should measure 20 mm. This checks paper scaling only; check STL dimensions separately in the slicer.</p></div>
-<div class="footer"><strong>Source and attribution.</strong> Body adapted from <a href="https://www.thingiverse.com/thing:3192801">Ford Mustang GT 2018 by SadPepe, Thingiverse 3192801</a>, under <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution–NonCommercial 4.0 (CC BY-NC 4.0)</a>. Resized for a 160 mm personal display model, with prepared print geometry, reinforced mirror connections, mounting pads and custom visual details. <strong>All final wheels are newly generated; no original source-wheel geometry is used.</strong> The source README credits its original wheels to stunner2211's ACR Viper. Those source wheels are retained only as workspace references; they are not among this package's final printable wheels. Original license and README are in <code>reference_assets/thingiverse_3192801/</code>; verified provenance is in <code>reference_assets/SOURCE_NOTES.md</code>. <a href="ATTRIBUTION.md">The handoff attribution</a> includes the original license notice. Preserve these credits and source license with shared files. Intended for a personal, noncommercial gift. No source-creator endorsement is implied.</div>
+<div class="footer"><strong>Source and attribution.</strong> Body adapted from <a href="https://www.thingiverse.com/thing:3192801">Ford Mustang GT 2018 by SadPepe, Thingiverse 3192801</a>, under <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution–NonCommercial 4.0 (CC BY-NC 4.0)</a>. Resized for a 160 mm personal display model, repaired and smoothed, with the roof and deck profile fitted to the photographs, a 2018-style front fascia, lamps and badges, reinforced mirror stalks, mounting pads and custom visual details. <strong>All final wheels are newly generated; no original source-wheel geometry is used.</strong> The source README credits its original wheels to stunner2211's ACR Viper. Those source wheels are retained only as workspace references; they are not among this package's final printable wheels. Original license and README are in <code>reference_assets/thingiverse_3192801/</code>; verified provenance is in <code>reference_assets/SOURCE_NOTES.md</code>. <a href="ATTRIBUTION.md">The handoff attribution</a> includes the original license notice. Preserve these credits and source license with shared files. Intended for a personal, noncommercial gift. No source-creator endorsement is implied.</div>
 </main></body>
 </html>

@@ -1,21 +1,21 @@
 # Exported model geometry checks
 
-**GEOMETRY_CHECKS_PASS** — 2026-09-17T07:47:15.425412+00:00
+**GEOMETRY_CHECKS_PASS** — 2026-09-19T09:30:09.071185+00:00
 
 STL coordinates are interpreted as millimetres. This report checks exported geometry; college slicer setup and a physical sample remain required.
 
 | Part | Dimensions (mm) | Triangles | Closed / consistent / one solid | Result |
 |---|---|---:|---|---|
-| 01_body_160mm.stl | 160.000 × 69.489 × 41.138 | 52,640 | yes / yes / yes | PASS |
-| 02_wheel_front_left.stl | 23.300 × 23.300 × 9.000 | 19,608 | yes / yes / yes | PASS |
-| 03_wheel_front_right.stl | 23.300 × 23.300 × 9.000 | 19,608 | yes / yes / yes | PASS |
-| 04_wheel_rear_left.stl | 23.300 × 23.300 × 9.000 | 19,608 | yes / yes / yes | PASS |
-| 05_wheel_rear_right.stl | 23.300 × 23.300 × 9.000 | 19,608 | yes / yes / yes | PASS |
-| 06_detail_test_1to1.stl | 30.000 × 20.000 × 11.900 | 2,292 | yes / yes / yes | PASS |
+| 01_body_160mm.stl | 160.000 × 69.730 × 40.586 | 52,490 | yes / yes / yes | PASS |
+| 02_wheel_front_left.stl | 23.300 × 23.300 × 9.100 | 5,606 | yes / yes / yes | PASS |
+| 03_wheel_front_right.stl | 23.300 × 23.300 × 9.100 | 5,606 | yes / yes / yes | PASS |
+| 04_wheel_rear_left.stl | 23.300 × 23.300 × 9.100 | 5,606 | yes / yes / yes | PASS |
+| 05_wheel_rear_right.stl | 23.300 × 23.300 × 9.100 | 5,606 | yes / yes / yes | PASS |
+| 06_detail_test_1to1.stl | 30.000 × 20.000 × 11.900 | 2,332 | yes / yes / yes | PASS |
 
 Measured body length: **160.000000 mm** (target 160 mm, tolerance ±0.01 mm).
 
-Assembly dimensions: **160.000 × 69.489 × 47.138 mm**.
+Assembly dimensions: **160.000 × 69.730 × 46.586 mm**.
 
 All wheels are checked for matching dimensions and identical geometry. Assembly transforms correct winding where the local-to-world transform reflects a part.
 

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mustang headless render</title>
+<style>html,body{margin:0;background:#000;overflow:hidden}canvas{display:block}</style>
+<script type="importmap">
+{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}
+</script>
+</head>
+<body>
+<script type="module">
+// Deterministic still renders of the assembled OBJ, driven by scripts/render_views.mjs.
+// The OBJ is loaded once (query: obj=<url>); window.renderView(view, mode, w, h) then
+// returns a PNG data URL for any camera/mode combination.
+import * as THREE from 'three';
+import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const q = new URLSearchParams(location.search);
+const objPath = q.get('obj') || '/model/Mustang_160mm_assembled.obj';
+
+// Same framing as scripts/render_package.py: Z-up millimetres, nose towards -X.
+THREE.Object3D.DEFAULT_UP.set(0, 0, 1);
+const VIEWS = {
+  three:   { pos: [-160, -190, 110], target: [0, 0, 21], scale: 194 },
+  rear34:  { pos: [170, -190, 100],  target: [0, 0, 21], scale: 194 },
+  side:    { pos: [0, -220, 21],     target: [0, 0, 21], scale: 181 },
+  sideR:   { pos: [0, 220, 21],      target: [0, 0, 21], scale: 181 },
+  front:   { pos: [-220, 0, 23],     target: [0, 0, 23], scale: 98 },
+  rear:    { pos: [220, 0, 23],      target: [0, 0, 23], scale: 98 },
+  top:     { pos: [0, -0.01, 300],   target: [0, 0, 21], scale: 181 },
+  wheel:   { pos: [-48.4472, -220, 11.65], target: [-48.4472, 0, 11.65], scale: 30 },
+  grille:  { pos: [-220, 0, 20],     target: [0, 0, 20], scale: 44 },
+  frontlow:{ pos: [-190, -120, 40],  target: [-20, 0, 20], scale: 120 },
+  threeR:  { pos: [-160, 190, 110],  target: [0, 0, 21], scale: 194 },
+  wheelR:  { pos: [42.4928, -220, 11.65], target: [42.4928, 0, 11.65], scale: 30 },
+  rearlow: { pos: [190, -120, 40],   target: [20, 0, 20], scale: 120 },
+  // Perspective approximation of photo 3 (side view): phone ~3.1 m from the near wheel
+  // faces, ~1.2 m high, slightly pitched down. Used for the visual contact sheet.
+  side_persp: { persp: true, pos: [4.75, -136, 40], pitch: -4, fov: 55.4 },
+};
+const WHEELS_NEAR = [[-48.4472, -31.75, 11.65], [42.4928, -31.75, 11.65]];
+
+// Flat/silhouette renders must not anti-alias (edge blends would read as false colours),
+// and anti-aliasing is a context-creation option, so keep two renderers.
+const renderers = {
+  shaded: new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true }),
+  exact: new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true }),
+};
+for (const r of Object.values(renderers)) { r.setPixelRatio(1); document.body.appendChild(r.domElement); }
+const scene = new THREE.Scene();
+const pmrem = new THREE.PMREMGenerator(renderers.shaded);
+const envTex = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+const linear = (r, g, b) => new THREE.Color().setRGB(r, g, b, THREE.LinearSRGBColorSpace);
+const PAINT = {
+  '01': { color: linear(.83, .85, .87), metalness: .12, roughness: .28, clearcoat: 1, clearcoatRoughness: .08 },
+  '02': { color: linear(.009, .012, .016), metalness: 0, roughness: .45, clearcoat: .15, clearcoatRoughness: .3, envMapIntensity: .3, specularIntensity: .5 },
+  '03': { color: linear(.60, .016, .022), metalness: .1, roughness: .3, clearcoat: .5 },
+  '04': { color: linear(.075, .09, .11), metalness: .65, roughness: .34 },
+  '05': { color: linear(.055, .064, .075), metalness: .45, roughness: .5 },
+  '06': { color: linear(.62, .64, .66), metalness: .9, roughness: .25 },
+  '07': { color: linear(.80, .30, .04), metalness: .1, roughness: .35, clearcoat: .5 },
+  // Gloss-black badges (pony, 5.0): same filament as 02 but a piano finish so they read on the matte grille.
+  '08': { color: linear(.02, .022, .026), metalness: 0, roughness: .48, clearcoat: .2, clearcoatRoughness: .35, envMapIntensity: .22, specularIntensity: .35 },
+};
+const FLAT = { '01': 0xffffff, '02': 0x000000, '03': 0xff0000, '04': 0x606870, '05': 0x404040, '06': 0xc0c0c0, '07': 0xff8800, '08': 0x282828 };
+// 'grey' previews the unpainted single-colour print: every material one matte filament.
+const mats = { shaded: {}, grey: {}, flat: {}, silhouette: {} };
+const greyFilament = new THREE.MeshStandardMaterial({ color: linear(.36, .37, .38), metalness: 0, roughness: .75 });
+for (const k of Object.keys(PAINT)) {
+  mats.shaded[k] = new THREE.MeshPhysicalMaterial(PAINT[k]);
+  mats.grey[k] = greyFilament;
+  mats.flat[k] = new THREE.MeshBasicMaterial({ color: FLAT[k] });
+  mats.silhouette[k] = new THREE.MeshBasicMaterial({ color: 0xffffff });
+}
+
+const sun = new THREE.DirectionalLight(0xffffff, 1.6);
+sun.position.set(-120, -160, 260); sun.castShadow = true; sun.shadow.mapSize.set(2048, 2048);
+Object.assign(sun.shadow.camera, { left: -150, right: 150, top: 150, bottom: -150, near: 10, far: 700 });
+sun.shadow.bias = -0.0005;
+const hemi = new THREE.HemisphereLight(0xdfe8ff, 0x20242a, 0.5);
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(2000, 2000), new THREE.ShadowMaterial({ opacity: 0.35 }));
+ground.receiveShadow = true;
+const lights = new THREE.Group(); lights.add(sun, hemi, ground);
+scene.add(lights);
+
+let car = null;
+new OBJLoader().load(objPath, obj => {
+  car = obj; scene.add(car); window.__loaded = true;
+}, undefined, err => { window.__error = String(err); });
+
+window.renderView = (view, mode, W, H) => {
+  const v = VIEWS[view] || VIEWS.three;
+  const scale = v.scale;
+  const shaded = mode === 'shaded' || mode === 'grey';
+  const renderer = shaded ? renderers.shaded : renderers.exact;
+  renderer.setSize(W, H);
+  let camera;
+  if (v.persp) {
+    camera = new THREE.PerspectiveCamera(v.fov, W / H, 1, 3000);
+    camera.position.set(...v.pos);
+    const p = THREE.MathUtils.degToRad(v.pitch);
+    camera.lookAt(new THREE.Vector3(v.pos[0], v.pos[1] + Math.cos(p) * 100, v.pos[2] + Math.sin(p) * 100));
+  } else {
+    camera = new THREE.OrthographicCamera(-scale / 2, scale / 2, scale / 2 * H / W, -scale / 2 * H / W, 1, 3000);
+    camera.position.set(...v.pos); camera.lookAt(new THREE.Vector3(...v.target));
+  }
+  camera.updateProjectionMatrix(); camera.updateMatrixWorld();
+  renderer.toneMapping = shaded ? THREE.ACESFilmicToneMapping : THREE.NoToneMapping;
+  renderer.shadowMap.enabled = shaded; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  scene.environment = shaded ? envTex : null;
+  scene.environmentIntensity = 0.9;
+  scene.background = new THREE.Color(mode === 'shaded' ? 0x3a4350 : mode === 'grey' ? 0x2b3138 : mode === 'flat' ? 0x0000ff : 0x000000);
+  lights.visible = shaded;
+  car.traverse(o => {
+    if (!o.isMesh) return;
+    const pick = m => mats[mode][(m.name || '').slice(0, 2)] ?? mats[mode]['01'];
+    o.material = Array.isArray(o.__orig || o.material) ? (o.__orig ||= o.material).map(pick) : pick(o.__orig ||= o.material);
+    o.castShadow = o.receiveShadow = shaded;
+  });
+  renderer.render(scene, camera);
+  // Projected near-side wheel centres let the validator align this view like a photo.
+  const wheels = WHEELS_NEAR.map(w => { const n = new THREE.Vector3(...w).project(camera); return [(n.x + 1) / 2 * W, (1 - n.y) / 2 * H]; });
+  return JSON.stringify({ dataUrl: renderer.domElement.toDataURL('image/png'), wheels });
+};
+</script>
+</body>
+</html>

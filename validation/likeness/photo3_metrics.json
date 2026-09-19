@@ -1,0 +1,22 @@
+{
+ "source": "images/3.jpg",
+ "wheels": {
+  "front": {
+   "cx": 218.0,
+   "cy": 792.0,
+   "r_px": 177.311279296875,
+   "blob_cx": 224.5,
+   "blob_cy": 801.0
+  },
+  "rear": {
+   "cx": 1213.0,
+   "cy": 795.0,
+   "r_px": 171.3075714111328,
+   "blob_cx": 1204.5,
+   "blob_cy": 802.0
+  }
+ },
+ "px_per_model_mm": 10.941279964811963,
+ "wheel_centre_y": 793.5,
+ "note": "Nose clipped at x=0. Wheel centres are the hub caps; blob_* are the shadow-biased circle fits."
+}

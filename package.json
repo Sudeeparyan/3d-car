@@ -1,0 +1,13 @@
+{
+  "name": "mustang-160mm-tools",
+  "private": true,
+  "description": "Headless render tooling for the 160 mm Mustang model (uses the locally installed Google Chrome).",
+  "type": "module",
+  "scripts": {
+    "render": "node scripts/render_views.mjs"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^24.0.0",
+    "three": "^0.170.0"
+  }
+}

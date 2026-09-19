@@ -1,8 +1,8 @@
 {
-  "created_utc": "2026-09-17T07:47:15.425412+00:00",
+  "created_utc": "2026-09-19T09:30:09.071185+00:00",
   "units": "mm",
   "status": "GEOMETRY_CHECKS_PASS",
-  "tested_export_manifest_sha256": "e0cf769e3bc1028398e2f51592bc41b4f2dbe4d9a16835bfc6a4e70846769d3b",
+  "tested_export_manifest_sha256": "6b22f0ab3392a663111a8098c8c53f0bc30dded848c0f34edc6c1701ea67a062",
   "tolerances": {
     "body_length_mm": 0.01,
     "bed_origin_mm": 0.001,
@@ -12,27 +12,27 @@
   "parts": [
     {
       "file": "print/01_body_160mm.stl",
-      "sha256": "bbcb944984bbeb264a11b0657c688b5b4afb45eafc0d7f3d665d2c348992039a",
-      "triangles": 52640,
-      "vertices_after_coincident_vertex_weld": 26322,
+      "sha256": "645f85612166196913a527c6360ffd57d99ac13eed66e6b31dcb9c643effafbb",
+      "triangles": 52490,
+      "vertices_after_coincident_vertex_weld": 26237,
       "bounds_mm": [
         [
           -80.0,
-          -34.746891021728516,
+          -34.864967346191406,
           0.0
         ],
         [
           80.0,
-          34.742244720458984,
-          41.137908935546875
+          34.864967346191406,
+          40.58644104003906
         ]
       ],
       "dimensions_mm": [
         160.0,
-        69.4891357421875,
-        41.137908935546875
+        69.72993469238281,
+        40.58644104003906
       ],
-      "volume_mm3": 259522.14060016038,
+      "volume_mm3": 254961.50273306415,
       "connected_components": 1,
       "zero_area_triangles": 0,
       "collapsed_index_faces": 0,
@@ -52,9 +52,9 @@
     },
     {
       "file": "print/02_wheel_front_left.stl",
-      "sha256": "007d793597282c5bf6f55eed49d28a2625e730b743f8a00ebb50f19e10a008a2",
-      "triangles": 19608,
-      "vertices_after_coincident_vertex_weld": 9774,
+      "sha256": "eadd8e64bc484180b6ae042abf0467e0fed85e0234c8cd1051bb80f7c2af8480",
+      "triangles": 5606,
+      "vertices_after_coincident_vertex_weld": 2805,
       "bounds_mm": [
         [
           -11.649999618530273,
@@ -64,15 +64,15 @@
         [
           11.649999618530273,
           11.649999618530273,
-          9.0
+          9.100000381469727
         ]
       ],
       "dimensions_mm": [
         23.299999237060547,
         23.299999237060547,
-        9.0
+        9.100000381469727
       ],
-      "volume_mm3": 3337.5283460593782,
+      "volume_mm3": 3280.5017195720975,
       "connected_components": 1,
       "zero_area_triangles": 0,
       "collapsed_index_faces": 0,
@@ -92,9 +92,9 @@
     },
     {
       "file": "print/03_wheel_front_right.stl",
-      "sha256": "007d793597282c5bf6f55eed49d28a2625e730b743f8a00ebb50f19e10a008a2",
-      "triangles": 19608,
-      "vertices_after_coincident_vertex_weld": 9774,
+      "sha256": "eadd8e64bc484180b6ae042abf0467e0fed85e0234c8cd1051bb80f7c2af8480",
+      "triangles": 5606,
+      "vertices_after_coincident_vertex_weld": 2805,
       "bounds_mm": [
         [
           -11.649999618530273,
@@ -104,15 +104,15 @@
         [
           11.649999618530273,
           11.649999618530273,
-          9.0
+          9.100000381469727
         ]
       ],
       "dimensions_mm": [
         23.299999237060547,
         23.299999237060547,
-        9.0
+        9.100000381469727
       ],
-      "volume_mm3": 3337.5283460593782,
+      "volume_mm3": 3280.5017195720975,
       "connected_components": 1,
       "zero_area_triangles": 0,
       "collapsed_index_faces": 0,
@@ -132,9 +132,9 @@
     },
     {
       "file": "print/04_wheel_rear_left.stl",
-      "sha256": "007d793597282c5bf6f55eed49d28a2625e730b743f8a00ebb50f19e10a008a2",
-      "triangles": 19608,
-      "vertices_after_coincident_vertex_weld": 9774,
+      "sha256": "eadd8e64bc484180b6ae042abf0467e0fed85e0234c8cd1051bb80f7c2af8480",
+      "triangles": 5606,
+      "vertices_after_coincident_vertex_weld": 2805,
       "bounds_mm": [
         [
           -11.649999618530273,
@@ -144,15 +144,15 @@
         [
           11.649999618530273,
           11.649999618530273,
-          9.0
+          9.100000381469727
         ]
       ],
       "dimensions_mm": [
         23.299999237060547,
         23.299999237060547,
-        9.0
+        9.100000381469727
       ],
-      "volume_mm3": 3337.5283460593782,
+      "volume_mm3": 3280.5017195720975,
       "connected_components": 1,
       "zero_area_triangles": 0,
       "collapsed_index_faces": 0,
@@ -172,9 +172,9 @@
     },
     {
       "file": "print/05_wheel_rear_right.stl",
-      "sha256": "007d793597282c5bf6f55eed49d28a2625e730b743f8a00ebb50f19e10a008a2",
-      "triangles": 19608,
-      "vertices_after_coincident_vertex_weld": 9774,
+      "sha256": "eadd8e64bc484180b6ae042abf0467e0fed85e0234c8cd1051bb80f7c2af8480",
+      "triangles": 5606,
+      "vertices_after_coincident_vertex_weld": 2805,
       "bounds_mm": [
         [
           -11.649999618530273,
@@ -184,15 +184,15 @@
         [
           11.649999618530273,
           11.649999618530273,
-          9.0
+          9.100000381469727
         ]
       ],
       "dimensions_mm": [
         23.299999237060547,
         23.299999237060547,
-        9.0
+        9.100000381469727
       ],
-      "volume_mm3": 3337.5283460593782,
+      "volume_mm3": 3280.5017195720975,
       "connected_components": 1,
       "zero_area_triangles": 0,
       "collapsed_index_faces": 0,
@@ -212,9 +212,9 @@
     },
     {
       "file": "print/06_detail_test_1to1.stl",
-      "sha256": "89f598564f5d9d719ff3155d8391ede90dc9d34fbc74418d6723a4157946b63e",
-      "triangles": 2292,
-      "vertices_after_coincident_vertex_weld": 1148,
+      "sha256": "e782ae1fc07248288b1694bb156361395b27dd1697f113c89e79a8d9accb963d",
+      "triangles": 2332,
+      "vertices_after_coincident_vertex_weld": 1168,
       "bounds_mm": [
         [
           -15.0,
@@ -232,7 +232,7 @@
         20.0,
         11.899999618530273
       ],
-      "volume_mm3": 1714.5883200456858,
+      "volume_mm3": 1751.5133332183125,
       "connected_components": 1,
       "zero_area_triangles": 0,
       "collapsed_index_faces": 0,
@@ -262,19 +262,19 @@
   "assembly_bounds_mm": [
     [
       -80.0,
-      -34.746891021728516,
+      -34.864967346191406,
       3.8146972691777137e-07
     ],
     [
       80.0,
-      34.742244720458984,
-      47.137908935546875
+      34.864967346191406,
+      46.58644104003906
     ]
   ],
   "assembly_dimensions_mm": [
     160.0,
-    69.4891357421875,
-    47.13790855407715
+    69.72993469238281,
+    46.58644065856934
   ],
   "wheel_body_intersections": [
     {
@@ -299,7 +299,7 @@
       ],
       "consistent_winding_after_transform": true,
       "positive_volume_after_transform": true,
-      "body_intersection_volume_mm3": 6.050715484207103e-15,
+      "body_intersection_volume_mm3": 0.0,
       "intersection_backend_status": "Error.NoError",
       "no_volumetric_collision": true
     },
@@ -312,7 +312,7 @@
       ],
       "consistent_winding_after_transform": true,
       "positive_volume_after_transform": true,
-      "body_intersection_volume_mm3": 3.247402347028583e-15,
+      "body_intersection_volume_mm3": 1.657007864253046e-14,
       "intersection_backend_status": "Error.NoError",
       "no_volumetric_collision": true
     },
@@ -325,7 +325,7 @@
       ],
       "consistent_winding_after_transform": true,
       "positive_volume_after_transform": true,
-      "body_intersection_volume_mm3": 3.122502256758253e-14,
+      "body_intersection_volume_mm3": 4.163336342344337e-16,
       "intersection_backend_status": "Error.NoError",
       "no_volumetric_collision": true
     }

@@ -1,65 +1,75 @@
-# Four-color Mustang gift files
+# Four-colour Mustang gift files
 
-The outer geometry matches the validated 160 mm body and one fixed wheel. These
-files contain real, closed color volumes for **white, black, red and dark grey**.
+The outer geometry is exactly the validated 160 mm body and one fixed wheel from
+`print/`. These files split each into real, closed colour volumes for **white,
+black, red and dark grey** filament. The regions are the same ones that colour the
+preview renders, so what you see in `previews/` is what the printer lays down.
 
-## Import checked in PrusaSlicer 2.9.6
+## Import (checked in PrusaSlicer 2.9.6 on an earlier revision of the same files)
 
-The 3MF files include named-volume metadata tested with PrusaSlicer 2.9.6.
-Other slicers may require the grouped STL fallback below. The technician must
-assign filament manually; PrusaSlicer does not retain the standard display colors.
-
-1. Open `body_color_parts.3mf` in PrusaSlicer. Keep it as one object with
-   three material parts. It should measure **160 x 69.49 x 41.14 mm**.
-2. Assign WHITE to white filament, BLACK to black, and RED to red.
-3. Open `wheel_color_parts.3mf`. Keep the three wheel color parts grouped.
-   Assign BLACK, DARK GREY and RED. One wheel is **23.30 x 23.30 x 9.00 mm**.
-4. Print **four copies** of the grouped wheel, all visible faces upward.
-5. Body orientation: upright, flat hidden underside on the bed. Wheel orientation:
-   flat back on the bed, visible spoke face up. Configure supports and material
-   changes using the actual college machine profile.
+1. Open `body_color_parts.3mf`. Keep it as **one object with three material
+   parts**. It should measure **160.00 x 69.73 x 40.59 mm**.
+2. Assign WHITE to white filament, BLACK to black, RED to red.
+3. Open `wheel_color_parts.3mf`. Keep the four wheel colour parts grouped and
+   assign BLACK, DARK GREY, RED and WHITE (the tiny RTR cap logo). One wheel is
+   **23.30 x 23.30 x 9.10 mm**.
+4. Print **four copies** of the grouped wheel, spoke face up.
+5. Body orientation: upright, flat hidden underside on the bed. Configure supports
+   and the colour-change purge using the actual college machine profile.
 
 ## If the slicer does not preserve 3MF material parts
 
 Import all three `body_*.stl` files together as **one object with multiple parts**,
-then assign each named part its filament. Do the same for the three `wheel_*.stl`
+then assign each named part its filament. Do the same for the four `wheel_*.stl`
 files. All body parts share one coordinate system; all wheel parts share another.
-**Do not center, drop or arrange individual colors separately.** Only place the
-whole grouped body or wheel on the bed. Some color volumes intentionally start
-above z=0 and are supported by other colors below them.
+**Do not centre, drop or arrange individual colours separately.** Only place the
+whole grouped body or wheel on the bed. Some colour volumes intentionally start
+above z=0 and are supported by other colours below them.
 
-## Appearance and scope
+## What is in each colour
 
-- White body; black windows, mirrors, rear spoiler, vents, grille, skirts, smoked
-  headlamp regions and lower side stripes with three diagonal white breaks.
-- Six red rear lamp bars; black tyres; dark grey wheel discs, rims and spokes;
-  red caliper relief. All detail is simplified for this 160 mm birthday model.
-- There is no separate silver filament. Dark grey is used for the wheel metal.
-- Colors partition the existing solid; they do not add stickers or protrusions.
-- Small badge strokes and caliper areas may be merged or omitted by a particular
-  nozzle/profile. Inspect actual sliced layers, then test one wheel and the
-  existing `print/06_detail_test_1to1.stl` before committing to the full body.
+- **White body**: paint, hood, roof, the rear number plate and the three LED
+  daytime-running slashes in each headlamp.
+- **Black body**: windscreen, door / quarter glass and B-pillars, rear glass,
+  mirrors, lip spoiler, shark-fin antenna, hood vents, recessed grille and lower
+  intake, the running-pony grille badge (gloss black on the car; it still stands
+  1.4 mm proud of the grille floor), smoked headlamps with their amber corner
+  markers, bumper corner slots, rear panel and lamp surrounds, rear diffuser,
+  splitter, skirts, the lower door stripe (four short hash marks then a solid band
+  to the rear wheel), the "5.0" fender badges and the plate lettering (the plate is blank until the registration is set in scripts/geometry.py).
+- **Red body**: the six tri-bar tail-light bars.
+- **Wheel**: black tyre and centre cap, dark grey rim, seven Y-spokes, hub and
+  brake backing, red caliper visible between the spokes, and the **white RTR
+  monogram and ring on the centre cap** (chrome on the real RTR Aero 7 wheels;
+  2.6 mm across with 0.25 mm strokes, so it needs a fine nozzle or it will merge
+  into a raised dot - a silver paint-pen dab on the relief is the fallback).
+- The exhaust tips are silver in the preview and print white here.
+
+Colours partition the existing solid; they do not add stickers or protrusions.
+Small features (badge strokes, DRL slashes, the pony) may merge or drop out with a
+coarse nozzle or profile: inspect the sliced layers, then test one wheel and
+`print/06_detail_test_1to1.stl` before committing to the full body.
 
 ## Checked and still pending
 
-The exported color solids pass closed-solid, positive-volume and consistent-face
-checks. Pairwise overlap and combined shape reproduction are recorded in
-`validation.json`. A real PrusaSlicer 2.9.6 import/export check retained one
-grouped object with three named volumes for each 3MF, with dimensions and color
-region positions preserved. See [the import audit](../validation/multicolor_import/README.md).
-Other slicers have not been tested. Manual filament assignments remain required.
-**The college printer model, filament assignments, actual sliced layers and a
-physical sample remain to be checked. These packages contain no printer G-code.**
+The exported colour solids pass closed-solid, positive-volume and consistent-face
+checks; pairwise overlap (tolerance 0.02 mm3) and reproduction of the original shape
+(tolerance 0.1 mm3) are recorded in `validation.json`. A PrusaSlicer 2.9.6 import/export audit on
+the earlier revision of these files kept one grouped object with three named
+volumes; the container format is unchanged, but repeat the import check on the
+college machine. **The printer model, filament assignments, actual sliced layers
+and a physical sample remain to be checked. No G-code is included.**
 
-These color files are material regions for a multicolor print; do not print them
+These colour files are material regions for a multicolour print; do not print them
 as separate loose pieces for gluing. Only the complete body and the four complete
 wheels are the five physical gift pieces.
 
 ## Attribution
 
-Body adapted from “Ford Mustang GT 2018” by SadPepe:
-https://www.thingiverse.com/thing:3192801 — CC BY-NC 4.0,
+Body adapted from "Ford Mustang GT 2018" by SadPepe:
+https://www.thingiverse.com/thing:3192801 - CC BY-NC 4.0,
 https://creativecommons.org/licenses/by-nc/4.0/ . Changes include size, repair,
-reinforcement, fixed-wheel attachment pads, hood, mirrors, spoiler and color
-partitions. Wheel geometry was independently created. Original source records
-are in `../reference_assets/`. Personal, non-commercial birthday gift use only.
+smoothing, photo-matched roof/deck profile, 2018-style front fascia and lamps,
+fixed-wheel attachment pads, mirrors, spoiler, badges and colour partitions. Wheel
+geometry was independently created. Source records are in `../reference_assets/`.
+Personal, non-commercial birthday gift use only.

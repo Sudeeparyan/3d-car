@@ -14,15 +14,30 @@
       "quantity": 1,
       "preferred_file": "body_color_parts.3mf",
       "parts": {
-        "white": "body_white.stl",
+        "red": "body_red.stl",
         "black": "body_black.stl",
-        "red": "body_red.stl"
+        "white": "body_white.stl"
+      },
+      "regions_by_filament": {
+        "white": [
+          "silver",
+          "white",
+          "body (remainder)"
+        ],
+        "black": [
+          "amber",
+          "black",
+          "gloss black badges"
+        ],
+        "red": [
+          "red"
+        ]
       },
       "orientation": "upright, hidden flat underside on bed",
       "dimensions_mm": [
         160.0,
-        69.4891357421875,
-        41.137908935546875
+        69.72993469238281,
+        40.58644104003906
       ],
       "assembly_offset_mm": [
         0,
@@ -35,17 +50,34 @@
       "quantity": 4,
       "preferred_file": "wheel_color_parts.3mf",
       "parts": {
-        "black": "wheel_black.stl",
+        "red": "wheel_red.stl",
+        "white": "wheel_white.stl",
         "dark_grey": "wheel_dark_grey.stl",
-        "red": "wheel_red.stl"
+        "black": "wheel_black.stl"
+      },
+      "regions_by_filament": {
+        "black": [
+          "black",
+          "tyre (remainder)"
+        ],
+        "dark_grey": [
+          "brake backing",
+          "gunmetal"
+        ],
+        "red": [
+          "red"
+        ],
+        "white": [
+          "silver"
+        ]
       },
       "orientation": "flat back on bed, visible face upward",
       "dimensions_mm": [
         23.299999237060547,
         23.299999237060547,
-        9.0
+        9.100000381469727
       ]
     }
   ],
-  "instructions": "Keep the three material regions within each physical object in their original shared coordinates. Assign filaments manually; standard 3MF colors are not machine settings. Do not print the material regions as loose pieces."
+  "instructions": "Keep the material regions within each physical object in their original shared coordinates. Assign filaments manually; standard 3MF colours are not machine settings. Do not print the material regions as loose pieces."
 }

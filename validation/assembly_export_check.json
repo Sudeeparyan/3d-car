@@ -2,22 +2,39 @@
   "status": "PASS",
   "assembled_obj_dimensions_mm": [
     160.0,
-    69.489136,
-    47.137909
+    69.729935,
+    46.586441
   ],
+  "assembled_obj_bounds_mm": [
+    [
+      -80.0,
+      -34.865,
+      0.0
+    ],
+    [
+      80.0,
+      34.865,
+      46.5864
+    ]
+  ],
+  "triangles": 140064,
   "physical_objects": [
-    "Body_|_aligned_white,_black_and_red_volumes_|_160_mm",
-    "Front_Left_wheel_|_glue_flat_back_to_body_pad",
-    "Front_Right_wheel_|_glue_flat_back_to_body_pad",
-    "Rear_Left_wheel_|_glue_flat_back_to_body_pad",
-    "Rear_Right_wheel_|_glue_flat_back_to_body_pad"
+    "Body | 160 mm | print STL is lowered 6 mm",
+    "Front Left wheel | glue flat back to body pad",
+    "Front Right wheel | glue flat back to body pad",
+    "Rear Left wheel | glue flat back to body pad",
+    "Rear Right wheel | glue flat back to body pad"
   ],
   "materials": [
     "01_Pearl_white_-_paint_or_white_filament",
     "02_Black_trim_and_opaque_glazing",
     "03_Red_lamps_and_brake_calipers",
-    "04_Gunmetal_wheels_and_silver_details"
+    "04_Gunmetal_wheels",
+    "05_Brake_backing_shadow",
+    "06_Chrome_RTR_cap_logo_and_exhaust_tips",
+    "07_Amber_headlamp_markers",
+    "08_Gloss_black_badges"
   ],
-  "generic_slicer_input_hashes": "ALL_MATCH",
-  "limits": "Does not replace actual machine slicing or physical test."
+  "note": "Assembled OBJ/MTL is for viewing and painting reference; print the separate STLs. Wheels sit on the body pads at y = +/-22.8 mm, body underside at z = 6 mm.",
+  "limits": "Does not replace actual machine slicing or a physical test."
 }

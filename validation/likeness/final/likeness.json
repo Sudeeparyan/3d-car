@@ -1,0 +1,156 @@
+{
+ "render_dir": "validation/likeness/iter_15",
+ "checks": {
+  "front.grille_black_fraction": {
+   "value": 0.891469681397739,
+   "pass": true,
+   "expect": "> 0.45"
+  },
+  "front.pony_logo_gloss_black_px": {
+   "value": 2982,
+   "pass": true,
+   "expect": "> 120 px (gloss-black pony badge on the matte grille)"
+  },
+  "front.headlamps_black_fraction": {
+   "value": [
+    0.6437229893538526,
+    0.6439338041530516
+   ],
+   "pass": true,
+   "expect": "> 0.45 each side"
+  },
+  "front.drl_bars": {
+   "value": [
+    3,
+    3
+   ],
+   "pass": true,
+   "expect": "3 white bars each side"
+  },
+  "front.amber_marker_px": {
+   "value": [
+    2500,
+    2498
+   ],
+   "pass": true,
+   "expect": "> 15 px each side"
+  },
+  "front.splitter_black_fraction": {
+   "value": 0.9478021978021978,
+   "pass": true,
+   "expect": "> 0.5"
+  },
+  "top.hood_vents": {
+   "value": 2,
+   "pass": true,
+   "expect": "2 black vents"
+  },
+  "top.roof_white_fraction": {
+   "value": 0.9779856978807808,
+   "pass": true,
+   "expect": "> 0.9"
+  },
+  "rear.tail_light_bars": {
+   "value": 6,
+   "pass": true,
+   "expect": "6 red bars"
+  },
+  "rear.centre_panel_black_fraction": {
+   "value": 1.0,
+   "pass": true,
+   "expect": "> 0.6"
+  },
+  "rear.spoiler_black_px": {
+   "value": 77876,
+   "pass": true,
+   "expect": "> 400 px"
+  },
+  "rear.exhaust_tips": {
+   "value": 4,
+   "pass": true,
+   "expect": "4 silver tips"
+  },
+  "rear.diffuser_black_fraction": {
+   "value": 0.8173939956669761,
+   "pass": true,
+   "expect": "> 0.4"
+  },
+  "side.stripe_segments": {
+   "value": 5,
+   "pass": true,
+   "expect": "5 (4 hash marks + solid stripe)"
+  },
+  "side.badge_5_0_px": {
+   "value": 469,
+   "pass": true,
+   "expect": "> 25 px (gloss black)"
+  },
+  "sideR.badge_5_0_px": {
+   "value": 455,
+   "pass": true,
+   "expect": "within 15% of the left badge (469 px)"
+  },
+  "side.badge_reads_5_0_both_sides": {
+   "value": {
+    "left_side_bars": [
+     3,
+     2
+    ],
+    "right_side_bars": [
+     3,
+     2
+    ]
+   },
+   "pass": true,
+   "expect": "[3, 2] bars per glyph on both sides: a \"5\" then a \"0\" reading nose-to-tail from outside"
+  },
+  "side.caliper_red_px_in_wheel": {
+   "value": 627,
+   "pass": true,
+   "expect": "> 40 px"
+  },
+  "side.wheel_face_gunmetal_fraction": {
+   "value": 0.5477879705364002,
+   "pass": true,
+   "expect": "0.3-0.75 (open spokes)"
+  },
+  "side.wheel_cap_rtr_logo_silver_px": {
+   "value": 368,
+   "pass": true,
+   "expect": "> 20 px (chrome RTR monogram and ring on the centre cap)"
+  },
+  "side.mirror_black_px": {
+   "value": 5660,
+   "pass": true,
+   "expect": "> 80 px"
+  },
+  "side.window_black_fraction": {
+   "value": 0.9527301820121341,
+   "pass": true,
+   "expect": "> 0.8"
+  }
+ },
+ "profile": {
+  "top_mean_abs_mm": 0.5792151175036844,
+  "top_max_abs_mm": 2.0938986180904493,
+  "top_bias_mm": 0.4699376974693803,
+  "scored_range": "windscreen, roof, deck, spoiler (x >= -25 mm)",
+  "segments_mean_abs_mm": {
+   "hood": 1.4199365730680427,
+   "windscreen_roof": 0.5411910061671991,
+   "deck_spoiler": 0.6525949814863755
+  },
+  "rocker_bottom_mean_abs_mm": 3.03702070443963,
+  "x_range_mm": [
+   -62.0,
+   58.0
+  ]
+ },
+ "summary": {
+  "features_passed": 22,
+  "features_total": 22,
+  "profile_top_mean_abs_mm": 0.5792151175036844,
+  "profile_ok": true,
+  "score_percent": 88.4
+ }
+}

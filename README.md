@@ -1,44 +1,57 @@
 # White Mustang birthday model
 
-A **160 mm long display model** inspired by the six photographs: white body, black windows and trim, dark wheels, and red brake and rear-light details. The finished gift has one body and four glued, fixed wheels.
+A **160 mm long display model** of the friend's 2018+ Mustang GT, matched to the six photographs: white body, gloss-black running-pony grille badge, slim smoked headlamps with LED slashes and amber markers, black glass, mirrors and lip spoiler, the four-hash-mark rocker stripe, black "5.0" fender badges (readable on both sides), seven-Y-spoke gunmetal RTR Aero 7 wheels with the RTR centre-cap monogram and red calipers, tri-bar tail lights, quad exhaust tips and a rear number plate (blank until the registration is supplied - set `PLATE_TEXT` in `scripts/geometry.py`). The finished gift has one body and four glued, fixed wheels.
 
-**Open [START HERE](START_HERE.html)** for the finished model and file links. See the [color and assembly diagram](previews/00_COLOR_AND_ASSEMBLY_DIAGRAM.png) and [print and finishing guide](docs/PRINT_AND_PAINT_GUIDE.html) before taking the files to college. A [plain-text guide](docs/PRINT_AND_PAINT_GUIDE.md) is also available.
+**Open [START HERE](START_HERE.html)** for the finished model and file links. See the [colour and assembly diagram](previews/00_COLOR_AND_ASSEMBLY_DIAGRAM.png) and [print and finishing guide](docs/PRINT_AND_PAINT_GUIDE.html) before taking the files to college. A [plain-text guide](docs/PRINT_AND_PAINT_GUIDE.md) is also available. `viewer.html` is an interactive 3D viewer (serve the folder with `python3 -m http.server` and open it in a browser).
 
 ## Take these to the college
 
-- `multicolor/` — separate color volumes for a compatible multicolor printer. Keep each assembly's parts in their shared positions and assign white, black, dark grey and red in the actual slicer. Consult the folder's file list and validation notes.
-- `print/` — one body STL, four labeled wheel STLs and a small detail sample. These are the single-material option; paint the details after printing. The four labeled wheels have identical geometry.
-- `previews/` — appearance and color references. Bring your original six photos too.
-- `docs/` — the guide and attribution.
-- `validation/GEOMETRY_REPORT.md` — digital checks of the six single-material STL exports.
+- `multicolor/` — separate colour volumes for a compatible multicolour printer (white, black, red, dark grey). Keep each assembly's parts in their shared positions and assign the filaments in the actual slicer. Read the folder's README and `validation.json`.
+- `print/` — one body STL, four labelled wheel STLs and a small detail sample. These are the single-material option; the grille, headlamps, lower intake, hood vents, bumper corner slots and rear diffuser are recessed into the surface, so the details read even before painting.
+- `previews/` — painted and grey (unpainted) views from every side plus wheel and grille close-ups. Bring your original six photos too.
+- `docs/` — the guide, plan check and attribution.
+- `validation/` — mesh checks of the six print STLs, the assembled OBJ record, and the photo-likeness report (`likeness/final/contact_sheet.jpg`).
 
-STLs contain geometry only. A colored preview or OBJ does not make a printer reproduce those colors automatically. The college printer's model and multicolor capability are still unknown. The technician must select its actual profile, check the layer preview and print samples before the full body. **No successful physical print or machine-ready college G-code is claimed.**
+STLs contain geometry only. A coloured preview or OBJ does not make a printer reproduce those colours automatically. The college printer's model and multicolour capability are still unknown. The technician must select its actual profile, check the layer preview and print samples before the full body. **No physical print or machine-ready college G-code is claimed.**
 
-## Which multicolor files go together
+## Which multicolour files go together
 
 | Physical object | Grouped file | Alternative: import these STLs together as parts | Copies and orientation |
 |---|---|---|---|
 | Body | [body_color_parts.3mf](multicolor/body_color_parts.3mf) | [body_white.stl](multicolor/body_white.stl), [body_black.stl](multicolor/body_black.stl), [body_red.stl](multicolor/body_red.stl) | **One** body, upright on its flat underside |
-| Wheel | [wheel_color_parts.3mf](multicolor/wheel_color_parts.3mf) | [wheel_black.stl](multicolor/wheel_black.stl), [wheel_dark_grey.stl](multicolor/wheel_dark_grey.stl), [wheel_red.stl](multicolor/wheel_red.stl) | **Four** complete wheels, visible face up and flat inner face down |
+| Wheel | [wheel_color_parts.3mf](multicolor/wheel_color_parts.3mf) | [wheel_black.stl](multicolor/wheel_black.stl), [wheel_dark_grey.stl](multicolor/wheel_dark_grey.stl), [wheel_red.stl](multicolor/wheel_red.stl), [wheel_white.stl](multicolor/wheel_white.stl) (RTR cap logo) | **Four** complete wheels, spoke face up and flat inner face down |
 
-Use either a grouped 3MF or the corresponding STL set. Import each STL set as **parts of one physical object**. Keep shared positions: some color volumes intentionally do not touch the bed. Never arrange, center or drop those individual volumes onto the bed. Silver is optional detail paint, not a fifth filament requirement.
+Use either a grouped 3MF or the corresponding STL set. Import each STL set as **parts of one physical object** and keep shared positions: some colour volumes intentionally do not touch the bed. Never arrange, centre or drop those individual volumes onto the bed. The preview's silver (RTR cap logo, exhaust tips) prints white; its amber markers and the gloss-black pony and 5.0 badges print black.
 
-Both grouped 3MFs passed an import/export check in **PrusaSlicer 2.9.6**: one grouped object with three named color volumes, preserved dimensions and relative positions, and no recorded repairs. **PrusaSlicer did not retain the standard display colors**, so assign filaments manually to the named regions and verify them in the color preview. Other slicers are untested; confirm the same grouping and positions, or use the grouped STL alternative. See the [3MF import audit](validation/multicolor_import/README.md).
+The colour volumes are produced from the same masks that colour the preview OBJ ([scripts/regions.py](scripts/regions.py)); they are closed, do not overlap (< 0.02 mm³) and rebuild each complete part (< 0.1 mm³), see [multicolor/validation.json](multicolor/validation.json). A PrusaSlicer 2.9.6 import/export audit on the earlier revision of these files kept one grouped object with three named volumes; the container format is unchanged, but **PrusaSlicer did not retain display colours**, so assign filaments manually and confirm them in the colour preview. Other slicers are untested.
 
-Read the [multicolor notes](multicolor/README.md) and [color-volume validation record](multicolor/validation.json). The color-volume geometry checks passed: the regions are closed, have no material overlap beyond numerical tolerance, and combine to reproduce each original complete part. These checks are separate from the six single-material STL checks and do not confirm filament assignments or a successful physical print.
+For planning only, the earlier revision's generic single-material simulation estimated **about 8 hours 37 minutes and 104 g** for the body and four wheels (this revision has the same footprint and 2 % less volume). **Multicolour time and material are unknown**; the actual slicer must estimate colour changes, purge waste and supports.
 
-For planning only, the generic single-material simulation estimated **about 8 hours 37 minutes and 104 g** for the body and four wheels. The detail coupon adds about 14 minutes and 2 g. **Multicolor time and material are unknown**; the actual slicer must estimate color changes, purge waste and supports. See the [generic simulation notes](validation/generic_slicer/README.md).
+## Sizes
 
-## View or edit the model
+Measured body print size: **160.00 × 69.73 × 40.59 mm**. Assembled size: **160.00 × 69.73 × 46.59 mm**. One wheel: **23.30 × 23.30 × 8.95 mm**. Import millimetres at 100 % scale; never auto-fit parts individually. The single-material exports passed the recorded geometry checks on 19 September 2026 ([report](validation/GEOMETRY_REPORT.md)).
 
-- [Editable Blender project](model/Mustang_160mm_editable.blend)
-- [Assembled OBJ](model/Mustang_160mm_assembled.obj) — keep its MTL file with it for materials.
+## How it was made (and how to regenerate it)
 
-Measured body print size: **160.00 × 69.49 × 41.14 mm**. Assembled size: **160.00 × 69.49 × 47.14 mm**. One wheel: **23.30 × 23.30 × 9.00 mm**. Import millimetres at 100% scale; never auto-fit parts individually.
+Everything is generated by scripts from the source body and the photographs; no Blender or slicer is needed on this machine.
 
-The single-material exports passed the recorded geometry checks on 17 September 2026. That report does not certify every fine feature or the separate color volumes. A physical wheel and detail sample, followed by a dry fit against the printed body's pads, remain part of the plan.
+```
+.venv/bin/python scripts/build_body.py      # voxel-repair, smooth and simplify the source body (cached, ~3 min)
+scripts/iterate.sh <name> --skip-body       # parts -> paint -> OBJ -> renders -> photo-likeness score
+scripts/promote_likeness.sh <name>          # accept a run into validation/likeness/final
+.venv/bin/python scripts/build_multicolor.py
+.venv/bin/python scripts/validate_parts.py
+.venv/bin/python scripts/make_previews.py
+.venv/bin/python scripts/package_handoff.py # diagram, START_HERE.html, Mustang_Gift_Package.zip
+```
 
-This is a simplified miniature derived from an existing Mustang model and customized using the photographs; it is not an exact 3D scan of the car.
+- [scripts/geometry.py](scripts/geometry.py) defines every feature solid (grille, lamps, mirrors from the source's own mirror shell, spoiler, wheels, badges) and the photo-fitted roof/deck correction.
+- [scripts/regions.py](scripts/regions.py) defines the colour regions once; the preview OBJ, the renders and the multicolour STLs all use them.
+- [scripts/validate_likeness.py](scripts/validate_likeness.py) scores the renders against the photographs; the accepted run is 88.4 % (19/19 features, roof/deck profile within 0.58 mm). See [validation/likeness/README.md](validation/likeness/README.md).
+- Requirements: Python 3.12 venv (`trimesh`, `manifold3d`, `scipy`, `scikit-image`, `opencv-python-headless`, `Pillow`), Node 18+ with `npm install` (three, puppeteer-core) and an installed Google Chrome for the headless renders.
+- `scripts/blender_optional/` keeps the earlier Blender-based scripts; `archive/revision1/` keeps the earlier revision's Blender file and slicer audits for reference only.
+
+This is a simplified miniature derived from an existing Mustang model and customised using the photographs; it is not an exact 3D scan of the car.
 
 ## Attribution
 

@@ -6,9 +6,9 @@ The body is adapted from **Ford Mustang GT 2018** by **SadPepe**.
 - Creator: https://www.thingiverse.com/SadPepe/designs
 - License recorded from the source listing: **Creative Commons Attribution–NonCommercial 4.0 (CC BY-NC 4.0)**, https://creativecommons.org/licenses/by-nc/4.0/
 
-The adaptation was resized to a 160 mm body length and prepared as a closed print mesh, with an integrated underside, reinforced mirror connections, a rear spoiler, wheel attachment pads, hood details and a white, black, dark-grey and red color arrangement guided by six reference photographs. The final wheels and detail sample were generated independently. **No source-wheel geometry is used in the final printable wheels.**
+The adaptation was resized to a 160 mm body length and prepared as a closed, smoothed print mesh, with an integrated underside, the roof and deck profile fitted to the photographs, a 2018-style front fascia with recessed grille, headlamps and badges, mirror heads taken from the source's own mirror shell on reinforced stalks, a rear spoiler, wheel attachment pads, hood vents and a white, black, dark-grey and red color arrangement guided by six reference photographs. The final wheels and detail sample were generated independently. **No source-wheel geometry is used in the final printable wheels.**
 
-The model is intended for a personal, noncommercial birthday gift. No endorsement by the source creator or Ford is implied. Preserve this attribution, the license notice and the source link alongside shared STL, OBJ and Blender files.
+The model is intended for a personal, noncommercial birthday gift. No endorsement by the source creator or Ford is implied. Preserve this attribution, the license notice and the source link alongside shared STL, OBJ and 3MF files.
 
 ## Exact original license notice
 

@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mustang 3D Viewer</title>
+<style>
+:root{--bg1:#232a33;--bg2:#0d1014;--panel:rgba(18,22,28,.82);--line:rgba(255,255,255,.1);--text:#e8edf2;--muted:#95a2b0;--accent:#5fb4ff}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--bg2);color:var(--text);font:14px/1.45 system-ui,-apple-system,sans-serif}
+#stage{position:fixed;inset:0;background:radial-gradient(ellipse at 50% 35%,var(--bg1),var(--bg2) 75%)}
+canvas{display:block}
+.panel{position:fixed;top:16px;left:16px;width:290px;max-width:calc(100vw - 32px);background:var(--panel);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:14px;padding:16px}
+h1{margin:0 0 2px;font-size:17px}
+.sub{margin:0 0 14px;color:var(--muted);font-size:12.5px}
+label.h{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 6px}
+.seg{display:flex;flex-direction:column;gap:4px}
+.seg button,.row button{all:unset;cursor:pointer;padding:7px 10px;border-radius:8px;border:1px solid var(--line);font-size:13px}
+.seg button:hover,.row button:hover{background:rgba(255,255,255,.06)}
+.seg button[aria-pressed=true]{border-color:var(--accent);background:rgba(95,180,255,.14)}
+.row{display:flex;flex-wrap:wrap;gap:4px}
+.row button{padding:5px 9px;font-size:12.5px}
+.toggles label{display:flex;align-items:center;gap:8px;margin:4px 0;cursor:pointer}
+.legend div{display:flex;align-items:center;gap:8px;margin:3px 0;font-size:13px}
+.sw{width:13px;height:13px;border-radius:4px;border:1px solid rgba(255,255,255,.25);flex:none}
+.stats{margin-top:12px;padding-top:10px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+.hint{position:fixed;bottom:14px;right:16px;color:var(--muted);font-size:12px;text-align:right}
+#loading{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+#loading div{background:var(--panel);border:1px solid var(--line);padding:12px 18px;border-radius:10px}
+#loading[hidden]{display:none}
+@media (max-width:640px){.panel{top:auto;bottom:16px;max-height:45vh;overflow:auto}.hint{display:none}}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+
+<aside class="panel">
+  <h1>Mustang GT · 160 mm</h1>
+  <p class="sub">Interactive view of the files in this package</p>
+
+  <label class="h">Show</label>
+  <div class="seg" id="views">
+    <button data-view="painted" aria-pressed="true">Painted model (assembled OBJ)</button>
+    <button data-view="multicolor">Multicolor print parts</button>
+    <button data-view="print">Single-colour print STLs</button>
+  </div>
+
+  <label class="h">Camera</label>
+  <div class="row" id="cams">
+    <button data-cam="three">3/4</button>
+    <button data-cam="front">Front</button>
+    <button data-cam="rear">Rear</button>
+    <button data-cam="side">Side</button>
+    <button data-cam="top">Top</button>
+  </div>
+
+  <label class="h">Options</label>
+  <div class="toggles">
+    <label><input type="checkbox" id="spin" checked> Auto-rotate</label>
+    <label><input type="checkbox" id="wire"> Wireframe</label>
+    <label><input type="checkbox" id="grid" checked> 10 mm grid</label>
+  </div>
+  <div class="row" style="margin-top:8px"><button id="shot">Save PNG</button></div>
+
+  <label class="h">Colours</label>
+  <div class="legend" id="legend"></div>
+  <div class="stats" id="stats"></div>
+</aside>
+
+<div class="hint">Drag to orbit · Right-drag to pan · Scroll to zoom</div>
+<div id="loading"><div id="loadmsg">Loading…</div></div>
+
+<script type="importmap">
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+import { STLLoader } from 'three/addons/loaders/STLLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { toCreasedNormals } from 'three/addons/utils/BufferGeometryUtils.js';
+
+// Model files are Z-up millimetres; the car's nose points to -X.
+THREE.Object3D.DEFAULT_UP.set(0, 0, 1);
+
+const stage = document.getElementById('stage');
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+stage.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture;
+scene.environmentIntensity = 0.9;
+
+const camera = new THREE.PerspectiveCamera(35, innerWidth / innerHeight, 1, 5000);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 1.2;
+
+const sun = new THREE.DirectionalLight(0xffffff, 1.6);
+sun.position.set(-120, -160, 260);
+sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048);
+Object.assign(sun.shadow.camera, { left: -150, right: 150, top: 150, bottom: -150, near: 10, far: 700 });
+sun.shadow.bias = -0.0005;
+scene.add(sun, new THREE.HemisphereLight(0xdfe8ff, 0x20242a, 0.5));
+
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(2000, 2000), new THREE.ShadowMaterial({ opacity: 0.35 }));
+ground.receiveShadow = true;
+scene.add(ground);
+
+const grid = new THREE.GridHelper(400, 40, 0x56626f, 0x2e363f);
+grid.rotation.x = Math.PI / 2;           // GridHelper is Y-up; lay it in the XY plane
+grid.position.z = 0.02;
+grid.material.transparent = true;
+grid.material.opacity = 0.55;
+scene.add(grid);
+
+// Material values mirror scripts/render/render.html (colours are linear, as in the MTL Kd).
+const linear = (r, g, b) => new THREE.Color().setRGB(r, g, b, THREE.LinearSRGBColorSpace);
+const PAINT = {
+  '01': { name: 'Pearl white body', color: linear(.83, .85, .87), metalness: .12, roughness: .28, clearcoat: 1, clearcoatRoughness: .08 },
+  '02': { name: 'Black trim, glazing, stripe, spoiler', color: linear(.009, .012, .016), metalness: 0, roughness: .45, clearcoat: .15, clearcoatRoughness: .3, envMapIntensity: .3, specularIntensity: .5 },
+  '03': { name: 'Red tail-light bars & calipers', color: linear(.60, .016, .022), metalness: .1, roughness: .3, clearcoat: .5 },
+  '04': { name: 'Gunmetal wheels', color: linear(.075, .09, .11), metalness: .65, roughness: .34 },
+  '05': { name: 'Brake backing', color: linear(.055, .064, .075), metalness: .45, roughness: .5 },
+  '06': { name: 'Chrome RTR wheel-cap logo & exhaust tips', color: linear(.62, .64, .66), metalness: .9, roughness: .25 },
+  '07': { name: 'Amber headlamp markers', color: linear(.80, .30, .04), metalness: .1, roughness: .35, clearcoat: .5 },
+  '08': { name: 'Gloss black pony & 5.0 badges', color: linear(.02, .022, .026), metalness: 0, roughness: .48, clearcoat: .2, clearcoatRoughness: .35, envMapIntensity: .22, specularIntensity: .35 },
+};
+const FILAMENT = {
+  white: { name: 'White filament', color: new THREE.Color('#e9ebee'), roughness: .55 },
+  black: { name: 'Black filament', color: new THREE.Color('#15171a'), roughness: .5 },
+  red: { name: 'Red filament', color: new THREE.Color('#c0151c'), roughness: .45 },
+  dark_grey: { name: 'Dark grey filament', color: new THREE.Color('#3b4148'), roughness: .5 },
+};
+const PLAIN = { name: 'Single material (print, then paint)', color: new THREE.Color('#c3c8ce'), roughness: .6 };
+
+const physical = spec => { const { name, ...p } = spec; return new THREE.MeshPhysicalMaterial(p); };
+const paintMats = Object.fromEntries(Object.entries(PAINT).map(([k, v]) => [k, physical(v)]));
+const filamentMats = Object.fromEntries(Object.entries(FILAMENT).map(([k, v]) => [k, physical(v)]));
+const plainMat = physical(PLAIN);
+const allMats = [...Object.values(paintMats), ...Object.values(filamentMats), plainMat];
+
+const views = {
+  painted: {
+    legend: ['01', '02', '08', '03', '04', '06', '07'].map(k => PAINT[k]),
+    note: 'Body + 4 glued wheels, as assembled',
+    async build() {
+      const obj = await loadOBJ('model/Mustang_160mm_assembled.obj');
+      obj.traverse(o => {
+        if (!o.isMesh) return;
+        const pick = m => paintMats[m.name.slice(0, 2)] ?? paintMats['01'];
+        o.material = Array.isArray(o.material) ? o.material.map(pick) : pick(o.material);
+      });
+      return obj;
+    },
+  },
+  multicolor: {
+    legend: Object.values(FILAMENT),
+    note: 'Body ×1 upright · wheel ×4, face up (print layout)',
+    async build() {
+      const g = new THREE.Group();
+      const [body, wheel] = await Promise.all([
+        Promise.all(['white', 'black', 'red'].map(c => loadSTL(`multicolor/body_${c}.stl`, filamentMats[c]))),
+        Promise.all(['black', 'dark_grey', 'red'].map(c => loadSTL(`multicolor/wheel_${c}.stl`, filamentMats[c]))),
+      ]);
+      g.add(...body);
+      const w = new THREE.Group(); w.add(...wheel);
+      [-45, -15, 15, 45].forEach(x => { const c = w.clone(); c.position.set(x, -64, 0); g.add(c); });
+      return g;
+    },
+  },
+  print: {
+    legend: [PLAIN],
+    note: 'print/ folder: body, 4 wheels, detail test coupon',
+    async build() {
+      const g = new THREE.Group();
+      const files = ['01_body_160mm', '02_wheel_front_left', '03_wheel_front_right', '04_wheel_rear_left', '05_wheel_rear_right', '06_detail_test_1to1'];
+      const meshes = await Promise.all(files.map(f => loadSTL(`print/${f}.stl`, plainMat)));
+      const spots = [[0, 0], [-60, -64], [-30, -64], [0, -64], [30, -64], [68, -64]];
+      meshes.forEach((m, i) => { m.position.set(...spots[i], 0); g.add(m); });
+      return g;
+    },
+  },
+};
+
+// ---- loading ----------------------------------------------------------------
+const loadingEl = document.getElementById('loading');
+const loadMsg = document.getElementById('loadmsg');
+const progress = new Map();
+function onProgress(url) {
+  return e => {
+    progress.set(url, [e.loaded, e.total || e.loaded]);
+    let a = 0, b = 0; for (const [l, t] of progress.values()) { a += l; b += t; }
+    loadMsg.textContent = `Loading model… ${Math.round(100 * a / Math.max(b, 1))}%`;
+  };
+}
+const loadOBJ = url => new OBJLoader().loadAsync(url, onProgress(url));
+async function loadSTL(url, material) {
+  const geo = await new STLLoader().loadAsync(url, onProgress(url));
+  return new THREE.Mesh(toCreasedNormals(geo, Math.PI / 5), material);
+}
+
+// ---- view switching -----------------------------------------------------------
+const cache = {};
+let current = null, bounds = new THREE.Box3();
+
+async function show(name) {
+  document.querySelectorAll('#views button').forEach(b => b.setAttribute('aria-pressed', b.dataset.view === name));
+  if (!cache[name]) {
+    loadingEl.hidden = false; progress.clear(); loadMsg.textContent = 'Loading model…';
+    try {
+      cache[name] = views[name].build().then(root => {
+        root.traverse(o => { if (o.isMesh) { o.castShadow = o.receiveShadow = true; } });
+        return root;
+      });
+      await cache[name];
+    } catch (err) {
+      delete cache[name];
+      loadMsg.innerHTML = location.protocol === 'file:'
+        ? 'Browsers block loading model files from <code>file://</code>.<br>Run <code>python3 -m http.server</code> in this folder and open <code>http://localhost:8000/viewer.html</code>.'
+        : `Could not load the model: ${err.message ?? err}`;
+      console.error(err);
+      return;
+    }
+    loadingEl.hidden = true;
+  }
+  const root = await cache[name];
+  if (current) scene.remove(current);
+  current = root; scene.add(root);
+
+  bounds.setFromObject(root);
+  const size = bounds.getSize(new THREE.Vector3());
+  let tris = 0;
+  root.traverse(o => { if (o.isMesh) tris += (o.geometry.index ? o.geometry.index.count : o.geometry.attributes.position.count) / 3; });
+  document.getElementById('legend').innerHTML = views[name].legend
+    .map(l => `<div><span class="sw" style="background:#${l.color.getHexString()}"></span>${l.name}</div>`).join('');
+  document.getElementById('stats').innerHTML =
+    `${views[name].note}<br>Scene extent: ${size.x.toFixed(1)} × ${size.y.toFixed(1)} × ${size.z.toFixed(1)} mm<br>${Math.round(tris).toLocaleString()} triangles`;
+  applyWire();
+  flyTo('three', false);
+}
+
+// ---- camera -------------------------------------------------------------------
+const DIRS = { three: [-1, -1.05, .62], front: [-1, 0, .18], rear: [1, 0, .18], side: [0, -1, .12], top: [0, -.001, 1] };
+let flight = null;
+function flyTo(key, animate = true) {
+  const sphere = bounds.getBoundingSphere(new THREE.Sphere());
+  const dist = sphere.radius / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2)) * (camera.aspect < 1 ? 1.5 : 1.05);
+  const target = sphere.center.clone();
+  const pos = target.clone().add(new THREE.Vector3(...DIRS[key]).normalize().multiplyScalar(dist));
+  if (!animate) { camera.position.copy(pos); controls.target.copy(target); controls.update(); return; }
+  flight = { t0: performance.now(), p0: camera.position.clone(), q0: controls.target.clone(), p1: pos, q1: target };
+}
+
+// ---- UI -------------------------------------------------------------------------
+document.getElementById('views').onclick = e => { const v = e.target.dataset?.view; if (v) show(v); };
+document.getElementById('cams').onclick = e => { const c = e.target.dataset?.cam; if (c) flyTo(c); };
+const spin = document.getElementById('spin');
+spin.onchange = () => controls.autoRotate = spin.checked;
+controls.addEventListener('start', () => { spin.checked = controls.autoRotate = false; flight = null; });
+const wire = document.getElementById('wire');
+function applyWire() { allMats.forEach(m => m.wireframe = wire.checked); }
+wire.onchange = applyWire;
+const gridBox = document.getElementById('grid');
+gridBox.onchange = () => grid.visible = gridBox.checked;
+document.getElementById('shot').onclick = () => {
+  const a = document.createElement('a');
+  a.href = renderer.domElement.toDataURL('image/png');
+  a.download = 'mustang-view.png';
+  a.click();
+};
+addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+
+renderer.setAnimationLoop(now => {
+  if (flight) {
+    const k = Math.min((now - flight.t0) / 700, 1), e = 1 - Math.pow(1 - k, 3);
+    camera.position.lerpVectors(flight.p0, flight.p1, e);
+    controls.target.lerpVectors(flight.q0, flight.q1, e);
+    if (k === 1) flight = null;
+  }
+  controls.update();
+  renderer.render(scene, camera);
+});
+
+show(views[location.hash.slice(1)] ? location.hash.slice(1) : 'painted');
+</script>
+</body>
+</html>
